@@ -6,24 +6,21 @@
 <title>Shopcard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100dvh;background:#f7f6f2;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
-.mid{max-width:430px;margin:0 auto;padding:36px 20px 64px}
-h1{font-size:22px;font-weight:600;letter-spacing:-.03em}
-.grid{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{display:block;text-decoration:none;color:#111;background:#fff;border-radius:4px;padding:28px 16px;text-align:center;font-size:20px;font-weight:600}
-.foot{position:fixed;left:0;right:0;bottom:22px;text-align:center;font-size:10px;letter-spacing:.22em;color:#bbb}
+html,body{min-height:100dvh;background:#f6f5f2;color:#191f28;font-family:system-ui,-apple-system,sans-serif}
+.m{max-width:430px;margin:0 auto;padding:56px 20px 64px}
+h1{font-size:28px;font-weight:700;letter-spacing:-.03em}
+.g{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.c{position:relative;display:block;border-radius:18px;overflow:hidden;aspect-ratio:120/220}
+.c img{width:100%;height:100%;object-fit:cover;display:block}
+.c span{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:#fff;font-size:13px}
+.foot{position:fixed;left:0;right:0;bottom:22px;text-align:center;font-size:10px;letter-spacing:.22em;color:#bab8b2}
 </style>
 </head>
 <body>
-  <main class="mid">
-    <h1>어떤 가게예요.</h1>
-    <div class="grid">
-      <a class="card" href="/jangbu/charim">헤어</a>
-      <a class="card" href="/jangbu/charim">네일</a>
-      <a class="card" href="/jangbu/charim">속눈썹</a>
-      <a class="card" href="/jangbu/charim">피부</a>
-    </div>
-  </main>
-  <p class="foot">Shopcard</p>
+<main class="m">
+<h1>어떤 가게예요</h1>
+<div class="g"><a class="c" href="/jangbu/charim"><img src="data:image/webp;base64,UklGRmYDAABXRUJQVlA4IFoDAABwHgCdASp4ANwAPxmIvFasuKYkpzXJqxAjCWlu3V7v8Y527lJXYnfTMu4ZOkrDkwEAH81ru7sh3t4MwyX0lmoW08if3ewHtucamAekkbN+38oNkK8Yoa3Hu/nclSbk5Bv7G2MTtXCa1wbacyawUADfzU4BPWAhWRrfzdq/1DS0qeleJ1L5YsH2kAByYiXP62DoHV0YKpzBy+Egvd/lb//r8riwNV2N/9r5kO1APcsvoGFmpBKnavzDMBOjQ5O9miQRIE5uT075zLzlp7hUq1EsEOuvscFJS9EfLc60lWki5k6D5C70FyXd7bLY4fJnwTApHAgBBkX83Mq3LegA/vBDSEeKoW0DP5IYKxtR8fstO1KCJJB8s70J+5JoKbJMbKRqSTZrlVcnia94t0w+F4WPyDkjUCjrtA24r2u9G/ksYiAaWx96sShe/B0VOZqCu7BaCd5nBY6MhjZpr6dHu/D41nqUEPW7DH2mw4srD2IgXFy2V+euoTcY4YEOQ61w9xsVJAzoZpvFoZ2Uj/RgrZcKLA1wQFfvQI+lC6uD2XcCAV3SPFzkE4d71CuqoGXiw3n6dBvZfmoc9zz4M8tgIopm1To78ILBCRZdKNRBYMtTyYMWO2LXncieNEI6ufJpPPMiDxiG9FbFC1DIkWzH1EIF37Me2VJgipTk+zvC/l6lsrf85/4wht/xCWcAIkT005Q52fShX7OhAI7S1VvkKhcopZoSd9zIIlbdOQqC9hs59aeL8UXMjwTC/uNfpnGQe65jC846IK87lIFyuLSMYvaId2XxafpcoG3jZudBxgnJIqRyk5x0Em0rjYJGn2kE9QFQvN6ANXHEBdB+q18ulb8wU1/Zy6T71862BydaNdo5OLmO4bJljCF65Vvzce+RyZX1/VW8NtDH9tseBJL4H+9u9E0tLCc+Ld1Jrhidlc08JuvMrbAvDjb0hh3cIWBWq8gXK7F2FMjzgnfEYSlZvfOOlbJJmPhsxuu8WxygetVjTiTd3F5KP1QA8eQ6+EHhr8qmOLKdYOR/Rhjc1tfztLuegoddubcLvbIbCVfR/Oyzwoc3u2AvY7hlP3ydrWIP6sZc4hNc3C1xePj3pPS3FwYNKExTf/2sHH/KBiOLAZ8Krbo1XPJC5gAAAAA=" alt="헤어" width="120" height="220"><span>헤어</span></a><a class="c" href="/jangbu/charim"><img src="data:image/webp;base64,UklGRvwDAABXRUJQVlA4IPADAADQJwCdASp4ANwAPxl+uFSstb+oqvDby/AjCWMAzNbWaV4Fku3jV85fjfOxu8j3tE6hLSf34bB2jN8MkW9n5L1Ma0JGWeopvqFqE3cTUTKF7n6d+zNfjunKftLRrbNalrURP2NYt7uYbNDGo0Z8zvaT1iqBvxmiWGAvmxbOR344jZhkHMtXOVWKSB8pzB5LWkFumdQELcB3B0z3swLZ+/A3y08NbVYZts1HWprTDzKczi69LvE4VgDDpvl8MkN77Sz2oQJyqEf3e/XtIHgZFNpNOImshqTeNXGBFGNyGnD9EPmKVYKDXC5tAuoWdGFKlYK1Uc8QOcd5C6qpp2oY2kBRg57v/wQkdVbAYTaaugkQJj24UGLw8L9GXb6hHVZGI+UvyrxETtZgs0m/6+PWX0GlQ+jwo70V5PzI9Yi8DxfvEHUNDxfqtoAAzHl5lSK8XbNazO2S3HFG6dZclD1PcIYaCnQAZ8sgXrsncLmx1SVR6FxvkpcB5abYkkNahts3HOUTJy2vWq7nXQ8olxVMWOUvyZocHyST7PxQsZIKIJfQuoiDoPUCUAzU5xrGBdeU/40sPqYGS4OfhGlicfY6iLJNsk3ETU7AAiVdkJbSxCWRUODjU46GsWrp5QgIuXiI076bVpU1VDp0Wn/Vik4hJArHa7cyPiVmwpj6bODDSNvedo+ittkmCJmgyCGlSevkkRO/qNZaz8ABac6SV5FUsR9exte4i4QSg3oCvIZyQx4Z8M1PTSRZAg9DntqpC40qUmLOD56fzS7t4r57LbRDj54Hw8WjhajNaKogXpvHYmMUnPmg1jk5EafDskA8DPU7Eu7c/NuIlmpNMlpITc9oSp1CxWve6+bkTOZy2ELMzs5jStHp69A6tabN4p0gI9uJfnGlRwRIiUmZo/lQMn8H1zN25RXlwZPB+cKoI0Aw6LnZHZCHK4M0J2UPNIvI2AzEx7dZtwhaBky1BOgfJ/Z8vxn6oyXlDmr33r3lLPo3+p5RS5PL1EZM6ofQVH/pXkAoe9fIhy9nScDwIgPRnff3I0V/L/yWV1fGz5CicNRqQ5KdE4pZvJP12/zStuVjhd3syx+lNSi9C6/ZoZ2SJZnseE3kvA+EVoowFseidxlLLWcvVAgnZAF8AE4xHIZu3sEFRvuKiusBChj3+XFAGinau4kKaV38cFTtAD0DKF197ObYrRVb5fp3x1zcl59j+42yQ/GXl7eWbuswrFkVgsSuEurz2PXw+AmEfdk+WwXhO9AA4rdoCjeliEkOaXVCWmRNRGcsd85wvYjzyh04Pbs69gAADcBHc0Y6dcjY6CRT8suYV9zKsQAAAL9BWBXABcgAAAA=" alt="네일" width="120" height="220"><span>네일</span></a><a class="c" href="/jangbu/charim"><img src="data:image/webp;base64,UklGRjoFAABXRUJQVlA4IC4FAAAwJQCdASp4ANwAPxmIuFcsqSUuJhbaScAjCWdu3V3MZwzUftmhpKjE/+z0Ydk0F8qC/8LQex87NMYI3QfxDZx0CAniT5wXBF3LjUAoDTlU9lTEefFKMwaGqpxNKjWPyWDbSkLrFYsQ9UUl74tFPnF8kXrowTcgzObKbuCA50eCkk9Y9kl67iwohJ2O/KkWWv7qoZkDtTIFfGDiiH2z4AgEh2X0XM4ZnQxt4bylm7SjB1Xr9bigTrUb+E3twlR4JkLtL2IVeFQ8x2Mq/Lw80+edT8qfxR9ik3tgWDBoGrsAx5hv7L8vxOml2SXX1H7o0Vh0NAEnIbsUAKN9J/FxBQhLbvWIBOJZG+8k/gxHZpGBeWmil03e6qvIztX4GyLyBEBr6L+Rf9bJSdNPVqNF3yPZIIAA/u+M6R5a2lVZvh+NxTzQ4HLi+Gzdpn5Bq8RSa9Ouh9LYXiU5/57ZHAJWX9b1+tu6aTqYHmkR9m8AXHDlqF9+KRWwmQbI83Ju0d8u7ZMG3+xoJldGVgwkgMdZehLCY2gU05pKqSu4lizmcLXgbePLo+OKIEw7FXUbXEVlgLPc0SRzVKOLT8rqUbSEE9D/fT83tBvxP4Y3c18BXujt093+RvqxtgQ1KcnPnEAKSQy6AWA80uDs23lX8OZinvyOk3Z7BgE7VIa4OXk0y36pwcLZRhh39dSLPKHMXLe5Z3FBaEa1ihXOrbG/qc019m5+2Tqz4OXWd4h5Hz/gxGoP65mYsxJqI/4lD4P7XwNc9gS0LMsGY7tiaWjXu6RNlwHEG9ThSO0oIjKK76pz7AtiVFemvEN7O+YKnUYi9kUQvyxh+ZP5eW4+XuU9QgGzr4dn82yKlTWh6PmoU28B9R0RZpiwtia2tgftKOWPmWcLAe5T0ho+Z1Ll47HqHCzX33ZqI5O6v0XU8/mjm0vKy+drz2dCFbE139zdyN4fVOgMYWFcImAV1o6mtXl+fIsSzqY3Ca3LWLxmXz3snsRVgzB1OrnO6PaWoI7Nm1gltbfU0cdwRObE8tAe8VNExGErj+Cth+PAUmKeR5pFao4w0Q6nz658X8uCGDtqXP339OvtuT2v3YK1dgC9lzj5KSa9AGLyRKl+vNkbDtukQ+texha3jl8XTkp+C5shqirV1aOoeE/TWWfQoaUo2avVNJJ7g+IVn6mZ5Xx2QWo6LE2PKV4HUEIaXJ0yG5Q7gywL5EJk7GMhYqoOSCcryJsuExo0FkwF8Cqvp2IjcpXdR9xIQxaVwcJJISsTYUaw/sO6HTk4IAuLvGirJAmn68xvlQH/YUFKimsiqnye72tWbHkmV2tdulXkMIvRVKWcUKdXXktORNNzV6nFZ97NqYjvc1QEPv8l1bNq89wptSlwCPvA8/Owxv/IWZVVkSeYO1dpjIdNy6+tuD0r7c+KzzjI3/suaw8V/saoUUz1ToP8oiuhsHWaN/GoyICwjZHp6EzHu+LcaDAQYeVJXD2GP/+3JRPucwzoIoORrwVN4ZfkeT0LX8qp0usWpyhX1NGZpGS8Iv78hmASV7gCOjqA1bNu8ANCTzZja9JWGsBDUoZGKJCJXgop/QyjZug1NiTGe2Y/2da5e0PVsUtGgxN3zMG5FW3FCagydAPB+fX4w1NalkrIV9cmPIfNHPG3/Ob0EP6snQc0F1+4g/Pq+/5dl8rE5SqinlQQGEu5QPg0ws8LBNMB5IJRJzde/vOETdSn9TiTjBLQkITnw9+wKhMwoinbtzKmMXJp8JRpcJGY0kcSI/AAAAA=" alt="속눈썸" width="120" height="220"><span>속눈썸</span></a><a class="c" href="/jangbu/charim"><img src="data:image/webp;base64,UklGRnICAABXRUJQVlA4IGYCAADwFQCdASp4ANwAPxmKt1asubcuJ3HagzAjCWduulvaxAZAe8itsJTl9S/DsfTIQQUhDWzbIN4Gr92a+hTU3NCZnWMFPXw49VU6saZbVl3p4P5ewLdrTcmUCDW9m6og9AIa7LGRXdOZyYf1z+mpqEda5aXZ1PDep4ZmkKGHDhCy/vxXYxKUFspBXyOAzxnMLUCPXuIZ1xriOb3V13+LT8r1o26LbA8C9eps9UAQx889xWaw+/mESUgAAP7wy1EUolaUFiPeILCCtp42RrWzPtICaXAACzzr3vljX1RG5HlAI4uvT+hlcw5s9GhrGtgf0InCrlZlNjGgfTauzHQRl4bMkcLBkS3Nqw+FKktlQkYHOoC8OXEi2Y7xoLX73ajoG9dtQJPcRjzhuVMBS4Xxu+TTZ2Q3g3wOTMQM4dVv4FhCm+7v3lPERgQvUswlf15TsveXnEJubfjBLBz9LUkS9hQohoy1cky+zmJOylnTHhSmZrr2lRE6rJgdwX7e1cIPxIcrkkhrgnf0JHzQUj2oZiVpzUy8llnoy0TDhd8Icwm0CCnG/55c46awaIA4K0HTtUfzbt2MSa2bSt+K1uR3g3U0R6PQlpCAXDt+CcUG4H98mVtOdGpkPKD3i0gpZj44d8nZZZyt4JXv16JJ9GNVOLNakGKwfrlMOL7BNt+JFDS940xdPkv1qfcD3+x7cXf6LNoQcu0NDqRjp1AlVMBSyI4b68NzI6SJwraUk5yWMUAjrE0xYmG03Eij0aUvJna6ZRliihbkTl1bUIxCoscpmSAnBNd+/D5Gm7PNNgUbxCgDY077K1AAAA==" alt="피부" width="120" height="220"><span>피부</span></a></div>
+</main>
+<p class="foot">Shopcard</p>
 </body>
 </html>
