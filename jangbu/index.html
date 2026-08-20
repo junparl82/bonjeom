@@ -11,17 +11,19 @@ html,body{min-height:100dvh;background:#f7f6f2;color:#111;font-family:Pretendard
 .mid{max-width:430px;margin:0 auto;padding:18px 20px 48px}
 h1{font-size:22px;font-weight:600;letter-spacing:-.03em}
 .grid{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.card{display:block;text-decoration:none;overflow:hidden;min-height:268px;position:relative}
-.ph{display:block;height:118px;background:#0a0a0a}
+.card{display:block;text-decoration:none;border-radius:2px;overflow:hidden;min-height:268px;position:relative}
 .card.dark{background:#0a0a0a;color:#f4f4f4}
 .card.light{background:#f7f4ef;color:#1c1b19}
-.ex{position:absolute;top:10px;left:12px;font-size:11px;color:#8a8680}
-.tag{padding:12px 12px 0;font-size:22px;font-weight:600;letter-spacing:-.03em}
-.open{padding:4px 12px 0;font-size:12px;color:#8a8a8a}
-.dark .open{color:#a0a0a0}
-.svc{display:flex;justify-content:space-between;padding:10px 12px 0;font-size:12px}
-.svc span{color:#8a8a8a}
-.btn{margin:16px 12px 14px;display:block;text-align:center;border:1px solid currentColor;padding:7px 0;font-size:12px}
+.card img{display:block;width:100%;height:118px;object-fit:cover;filter:saturate(.55) contrast(1.18) brightness(.86)}
+.card .ex{position:absolute;top:10px;left:12px;font-size:11px;color:#8a8680}
+.card .tag{padding:12px 12px 0;font-size:22px;font-weight:600;letter-spacing:-.03em}
+.card.dark .tag{padding-top:10px}
+.card .open{padding:4px 12px 0;font-size:12px;color:#8a8a8a}
+.card.dark .open{color:#a0a0a0}
+.card .svc{display:flex;justify-content:space-between;padding:10px 12px 0;font-size:12px}
+.card .svc b{font-weight:400}
+.card .svc span{color:#8a8a8a}
+.card .btn{margin:16px 12px 14px;display:block;text-align:center;border:1px solid currentColor;padding:7px 0;font-size:12px}
 </style>
 </head>
 <body>
@@ -29,10 +31,34 @@ h1{font-size:22px;font-weight:600;letter-spacing:-.03em}
   <main class="mid">
     <h1>어느 가게예요</h1>
     <div class="grid">
-      <a class="card dark" href="/jangbu/charim"><span class="ph"></span><p class="tag">헤어</p><p class="open">오늘 열림</p><p class="svc">커트<span>45,000</span></p><span class="btn">전화</span></a>
-      <a class="card light" href="/jangbu/charim"><span class="ex">예시</span><p class="tag" style="margin-top:28px">네일</p><p class="open">오늘 열림</p><p class="svc">젤<span>55,000</span></p><span class="btn">전화</span></a>
-      <a class="card dark" href="/jangbu/charim"><span class="ph"></span><p class="tag">속눈썹</p><p class="open">오늘 열림</p><p class="svc">연장<span>70,000</span></p><span class="btn">전화</span></a>
-      <a class="card light" href="/jangbu/charim"><span class="ex">예시</span><p class="tag" style="margin-top:28px">피부</p><p class="open">오늘 열림</p><p class="svc">관리<span>80,000</span></p><span class="btn">전화</span></a>
+      <a class="card dark" href="/jangbu/charim">
+        <img src="data:image/jpeg;base64,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" alt="">
+        <p class="tag">헤어</p>
+        <p class="open">오늘 열림</p>
+        <p class="svc"><b>커트</b><span>45,000</span></p>
+        <span class="btn">전화</span>
+      </a>
+      <a class="card light" href="/jangbu/charim">
+        <span class="ex">예시</span>
+        <p class="tag" style="margin-top:28px">네일</p>
+        <p class="open">오늘 열림</p>
+        <p class="svc"><b>젤</b><span>55,000</span></p>
+        <span class="btn">전화</span>
+      </a>
+      <a class="card dark" href="/jangbu/charim">
+        <img src="data:image/jpeg;base64,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" alt="">
+        <p class="tag">속눈썹</p>
+        <p class="open">오늘 열림</p>
+        <p class="svc"><b>연장</b><span>70,000</span></p>
+        <span class="btn">전화</span>
+      </a>
+      <a class="card light" href="/jangbu/charim">
+        <span class="ex">예시</span>
+        <p class="tag" style="margin-top:28px">피부</p>
+        <p class="open">오늘 열림</p>
+        <p class="svc"><b>관리</b><span>80,000</span></p>
+        <span class="btn">전화</span>
+      </a>
     </div>
   </main>
 </body>

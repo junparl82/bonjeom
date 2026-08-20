@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>본점 · 차림</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100dvh;background:#f7f6f2;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
+.bar{display:flex;justify-content:space-between;padding:22px 20px 0;font-size:13px;color:#8a8a8a}
+.mid{max-width:430px;margin:0 auto;padding:18px 16px 48px}
+h1{font-size:22px;font-weight:600;letter-spacing:-.03em;padding:0 4px}
+.grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.card{display:block;text-decoration:none;overflow:hidden;min-height:210px;position:relative}
+.ph{display:block;height:88px;background:url("data:image/jpeg;base64,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") center/cover no-repeat}
+.card .name{padding:10px 10px 0;font-size:18px;letter-spacing:-.03em}
+.card .open{padding:3px 10px 0;font-size:11px;opacity:.7}
+.card .look{position:absolute;top:8px;left:8px;font-size:10px;letter-spacing:.02em}
+.card .btn{margin:12px 10px 12px;display:block;text-align:center;padding:7px 0;font-size:11px}
+.bs{background:#0a0a0a;color:#f4f4f4}
+.bs .ph{filter:saturate(.55) contrast(1.18) brightness(.86)}
+.bs .btn{border:1px solid #f4f4f4}
+.wt{background:#f7f4ef;color:#1c1b19}
+.wt .ph{height:72px;margin:14px 14px 0;filter:saturate(.85) brightness(1.06)}
+.wt .btn{background:#c8c3ba;color:#1c1b19}
+.wd{background:#efe6d8;color:#2a1f16}
+.wd .ph{height:64px;filter:sepia(.25) saturate(.95)}
+.wd .btn{background:#7a5336;color:#f7f0e6}
+.mg{background:#fff;color:#111}
+.mg .ph{filter:saturate(.55) contrast(1.28) brightness(.94)}
+.mg .name{font-size:26px;font-weight:300}
+.mg .btn{background:#111;color:#fff}
+.hg{background:#f2efe8;color:#141414}
+.hg .name{padding-top:36px;font-size:28px;font-weight:700}
+.hg .btn{border:0;text-decoration:underline}
+.nn{background:#07080c;color:#f4f1ea}
+.nn .ph{filter:saturate(.4) contrast(1.18) brightness(.62)}
+.nn .btn{border:1px solid #e8d5b5;color:#e8d5b5}
+</style>
+</head>
+<body>
+  <div class="bar"><span>본점</span><span>예시</span></div>
+  <main class="mid">
+    <h1>이 차림으로</h1>
+    <div class="grid">
+      <a class="card bs" href="/jangbu/facts"><span class="ph"></span><span class="look">블랙스튜디오</span><p class="name">이도</p><p class="open">오늘 열림</p><span class="btn">전화</span></a>
+      <a class="card wt" href="/jangbu/facts"><span class="ph"></span><span class="look">희 타올</span><p class="name">이도</p><p class="open">오늘 열림</p><span class="btn">전화</span></a>
+      <a class="card wd" href="/jangbu/facts"><span class="ph"></span><span class="look">나무 조명</span><p class="name">이도</p><p class="open">오늘 열림</p><span class="btn">전화</span></a>
+      <a class="card mg" href="/jangbu/facts"><span class="ph"></span><span class="look">잡지 화보</span><p class="name">이도</p><p class="open">오늘 열림</p><span class="btn">전화</span></a>
+      <a class="card hg" href="/jangbu/facts"><span class="look">한글 간결</span><p class="name">이도</p><p class="open">오늘 열림</p><span class="btn">전화</span></a>
+      <a class="card nn" href="/jangbu/facts"><span class="ph"></span><span class="look">밤 네온</span><p class="name">이도</p><p class="open">오늘 열림</p><span class="btn">전화</span></a>
+    </div>
+  </main>
+</body>
+</html>
