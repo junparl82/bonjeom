@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>장부 · 사실</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100dvh;background:#f4f2ee;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
-.bar{display:flex;justify-content:space-between;padding:22px 22px 0;font-size:13px;color:#9a9a9a}
-.mid{padding:22px 20px 56px;max-width:430px;margin:0 auto}
-h1{font-size:22px;font-weight:600}
-.lead{margin-top:6px;font-size:13px;color:#8a8a8a}
-label{display:block;margin-top:14px;font-size:12px;color:#8a8a8a}
-input{width:100%;margin-top:5px;border:1px solid #ddd;border-radius:8px;padding:10px 11px;font:inherit}
-.cta{display:block;margin-top:28px;text-align:center;text-decoration:none;background:#111;color:#fff;border-radius:6px;padding:14px 16px;font-weight:600}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { min-height: 100dvh; background: #f4f2ee; color: #111;
+  font-family: "Noto Sans CJK KR", "Noto Sans KR", Pretendard, system-ui, -apple-system, sans-serif; }
+.bar { display: flex; justify-content: space-between; padding: 22px 22px 0; font-size: 13px; color: #9a9a9a; }
+.mid { padding: 22px 20px 56px; max-width: 430px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 600; letter-spacing: -.03em; }
+.lead { margin-top: 6px; font-size: 13px; color: #8a8a8a; }
+label { display: block; margin-top: 14px; font-size: 12px; color: #8a8a8a; }
+input { width: 100%; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; padding: 10px 11px; font: inherit; background: #fff; }
+.svc { list-style: none; margin-top: 8px; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 4px 12px; }
+.svc li { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 15px; color: #111; }
+.svc li:last-child { border-bottom: 0; }
+.photo { margin-top: 8px; width: 96px; height: 128px; object-fit: cover; object-position: 55% 50%; border-radius: 4px; background: #111; }
+.cta { display: block; margin-top: 28px; text-align: center; text-decoration: none; background: #111; color: #fff;
+  border-radius: 6px; padding: 14px 16px; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -26,6 +32,15 @@ input{width:100%;margin-top:5px;border:1px solid #ddd;border-radius:8px;padding:
     <label>시간 <input value="화–일 11:00–20:00 · 월요일 쉼" readonly></label>
     <label>주소 <input value="서울 성동구 성수동" readonly></label>
     <label>전화 <input value="0507-1234-5678" readonly></label>
+    <label>시술</label>
+    <ul class="svc">
+      <li><span>커트</span><span>45,000</span></li>
+      <li><span>염색</span><span>문의</span></li>
+      <li><span>펌</span><span>130,000</span></li>
+      <li><span>상담</span><span>문의</span></li>
+    </ul>
+    <label>사진 한 장</label>
+    <img class="photo" src="data:image/jpeg;base64,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" alt="이도 가게 분위기"/>
     <a class="cta" href="/jangbu/shop">저장</a>
   </main>
 </body>
