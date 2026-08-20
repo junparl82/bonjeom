@@ -5,135 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>이도</title>
 <style>
-:root {
-  --bg: #0A0A0A;
-  --ink: #F4F4F4;
-  --mute: #8A8A8A;
-  --dim: #5C5C5C;
-  --line: rgba(255,255,255,0.16);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: #000; }
-body {
-  margin: 0;
-  background: #000;
-  color: var(--ink);
-  font-family: "Noto Sans CJK KR", "Noto Sans KR", Pretendard, system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-.page {
-  max-width: 430px;
-  margin: 0 auto;
-  background: var(--bg);
-  min-height: 100dvh;
-}
-img { display: block; width: 100%; }
-.hero {
-  position: relative;
-  height: 100dvh;
-  overflow: hidden;
-  background: #000;
-}
-.hero img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  object-position: 55% 50%;
-  filter: saturate(0.75) contrast(1.12) brightness(0.92);
-}
-.demo {
-  position: absolute;
-  top: 18px; right: 18px;
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  color: #8A8A8A;
-  z-index: 2;
-}
-.hero .veil {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,10,10,0) 42%, rgba(10,10,10,0.55) 68%, #0A0A0A 100%);
-  pointer-events: none;
-}
-.hero .meta {
-  position: absolute;
-  left: 24px; right: 24px; bottom: 36px;
-  z-index: 2;
-}
-.name {
-  font-size: 56px;
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-.line {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  color: #C8C8C8;
-}
-.open {
-  margin-top: 14px;
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--mute);
-}
-.pad { padding: 36px 24px 0; }
-.svc { list-style: none; }
-.svc li {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-}
-.svc li:first-child { padding-top: 0; }
-.svc .ask { color: var(--mute); }
-.facts {
-  padding: 32px 24px 0;
-  font-size: 14px;
-  line-height: 1.7;
-  color: var(--mute);
-}
-.facts a {
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--line);
-}
-.acts {
-  padding: 28px 24px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.acts a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  border: 1px solid #F4F4F4;
-  color: #F4F4F4;
-  text-decoration: none;
-  font-size: 15px;
-  letter-spacing: 0.08em;
-  border-radius: 0;
-}
-.foot {
-  padding: 40px 24px 48px;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: #2E2E2E;
-  text-align: center;
-}
+:root{--bg:#0A0A0A;--ink:#F4F4F4;--mute:#8A8A8A;--dim:#5C5C5C;--line:rgba(255,255,255,0.16)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000}
+body{margin:0;background:#000;color:var(--ink);font-family:"Noto Sans CJK KR","Noto Sans KR",Pretendard,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.page{max-width:430px;margin:0 auto;background:var(--bg);min-height:100dvh}
+img{display:block;width:100%}
+.hero{position:relative;height:100dvh;overflow:hidden;background:#000}
+.hero img{height:100%;width:100%;object-fit:cover;object-position:55% 50%;filter:saturate(0.75) contrast(1.12) brightness(0.92)}
+.demo{position:absolute;top:18px;right:18px;font-size:11px;letter-spacing:0.06em;color:#8A8A8A;z-index:2}
+.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0) 42%,rgba(10,10,10,0.55) 68%,#0A0A0A 100%);pointer-events:none}
+.hero .meta{position:absolute;left:24px;right:24px;bottom:36px;z-index:2}
+.name{font-size:56px;font-weight:400;letter-spacing:-0.04em;line-height:1}
+.line{margin-top:10px;font-size:14px;font-weight:400;letter-spacing:0.12em;color:#C8C8C8}
+.open{margin-top:14px;font-size:12px;letter-spacing:0.04em;color:var(--mute)}
+.pad{padding:36px 24px 0}
+.svc{list-style:none}
+.svc li{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);font-size:16px;font-weight:400;letter-spacing:-0.02em}
+.svc li:first-child{padding-top:0}
+.svc .ask{color:var(--mute)}
+.facts{padding:32px 24px 0;font-size:14px;line-height:1.7;color:var(--mute)}
+.facts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.acts{padding:28px 24px 0;display:flex;flex-direction:column;gap:10px}
+.acts a{display:flex;align-items:center;justify-content:center;height:48px;border:1px solid #F4F4F4;color:#F4F4F4;text-decoration:none;font-size:15px;letter-spacing:0.08em;border-radius:0}
+.foot{padding:40px 24px 48px;font-size:11px;letter-spacing:0.18em;color:#2E2E2E;text-align:center}
 </style>
 </head>
 <body>
 <main class="page">
   <section class="hero">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAIIAwwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDPLACEHOLDER" alt="이도 가게 분위기"/>
+    <img src="data:image/jpeg;base64,SEE_FILE" alt="이도 가게 분위기"/>
     <span class="demo">예시</span>
     <div class="veil"></div>
     <div class="meta">
