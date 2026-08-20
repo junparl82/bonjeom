@@ -10,7 +10,6 @@ html,body{background:#000;color:#fff;font-family:Pretendard,system-ui,-apple-sys
 .page{max-width:430px;margin:0 auto;min-height:100dvh}
 .top{display:flex;justify-content:space-between;padding:16px 20px;font-size:13px;color:#9a9a9a;background:#f4f2ee}
 .hero{position:relative;min-height:48vh;background:#0a0a0a}
-.hero .tex{position:absolute;inset:0;background:linear-gradient(90deg,#0a0a0a 0%,#2a2a2a 78%,#0a0a0a 100%)}
 .hero .demo{position:absolute;top:18px;right:18px;font-size:11px;color:#c8c8c8}
 .rest{padding:28px 20px 48px}
 .name{font-size:34px;font-weight:600}
@@ -18,13 +17,12 @@ html,body{background:#000;color:#fff;font-family:Pretendard,system-ui,-apple-sys
 .treats{margin-top:22px;list-style:none}
 .treats li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #222}
 .meta{margin-top:22px;color:#c8c8c8}
-.btn{display:block;margin-top:18px;text-align:center;text-decoration:none;background:#fff;color:#111;padding:13px}
 </style>
 </head>
 <body>
 <main class="page">
   <div class="top"><span>장부 · 미리보기</span><span>예시</span></div>
-  <section class="hero"><div class="tex"></div><span class="demo">예시</span></section>
+  <section class="hero"><span class="demo">예시</span></section>
   <div class="rest">
     <h1 class="name">이도</h1>
     <p>선의 가게</p>
@@ -35,8 +33,7 @@ html,body{background:#000;color:#fff;font-family:Pretendard,system-ui,-apple-sys
       <li><span>펌</span><span>130,000</span></li>
       <li><span>상담</span><span>문의</span></li>
     </ul>
-    <p class="meta">화–일 11:00–20:00 · 월요일 쉼</p>
-    <a class="btn" href="/jangbu/attach">공개하기</a>
+    <p class="meta">화–일 11:00–20:00 · 월요일 쉬</p>
   </div>
 </main>
 </body>
