@@ -11,14 +11,14 @@ html,body{min-height:100dvh;background:#f4f2ee;color:#111;font-family:Pretendard
 .mid{min-height:calc(100dvh - 72px);display:grid;place-content:center;place-items:center;gap:28px;padding:40px 28px 80px}
 h1{font-size:22px;font-weight:600;letter-spacing:-.03em;text-align:center}
 .kakao{display:block;width:min(320px,86vw);border:0;border-radius:6px;background:#fee500;color:#191919;
-  font:inherit;font-size:16px;font-weight:600;padding:16px 20px;cursor:pointer;text-align:center}
+  font:inherit;font-size:16px;font-weight:600;padding:16px 20px;cursor:pointer;text-align:center;text-decoration:none}
 </style>
 </head>
 <body>
   <div class="bar"><span>본점</span><span>예시</span></div>
-  <form class="mid" method="post" action="/login">
+  <div class="mid">
     <h1>카카오로 이어집니다.</h1>
-    <button class="kakao" type="submit">카카오</button>
-  </form>
+    <a class="kakao" href="/jangbu/facts">카카오</a>
+  </div>
 </body>
 </html>

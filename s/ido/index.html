@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이도 · 선의 가게</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;color:#fff;font-family:Pretendard,system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.45}
+.page{max-width:430px;margin:0 auto;min-height:100dvh;background:#000}
+.hero{position:relative;min-height:58vh;background:#0a0a0a;overflow:hidden}
+.hero .tex{position:absolute;inset:0;background:
+  radial-gradient(80% 70% at 70% 20%, rgba(255,255,255,.08), transparent 50%),
+  linear-gradient(90deg, #0a0a0a 0%, #161616 72%, #2a2a2a 78%, #111 86%, #0a0a0a 100%)}
+.hero .slit{position:absolute;top:8%;bottom:8%;right:18%;width:2px;background:linear-gradient(180deg, transparent, rgba(255,255,255,.55), transparent)}
+.hero .demo{position:absolute;top:18px;right:18px;font-size:11px;color:#c8c8c8;letter-spacing:.06em}
+.rest{padding:28px 20px 48px}
+.name{font-size:34px;font-weight:600;letter-spacing:-.03em}
+.tag{margin-top:6px;font-size:16px}
+.open{margin-top:10px;font-size:13px;color:#c8c8c8}
+.treats{margin-top:22px;list-style:none}
+.treats li{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #222}
+.treats .price{color:#c8c8c8}
+.meta{margin-top:22px;font-size:14px;color:#c8c8c8;display:grid;gap:6px}
+.map{margin-top:10px;display:inline-block;font-weight:600;font-size:14px;color:#fff;text-decoration:none}
+.acts{margin-top:28px;display:grid;gap:10px}
+.btn{display:block;text-align:center;text-decoration:none;border:1px solid #fff;color:#fff;padding:13px 12px;font-weight:600;font-size:14px}
+.foot{margin-top:28px;text-align:center;font-size:11px;color:#666}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="tex"></div>
+    <div class="slit"></div>
+    <span class="demo">예시</span>
+  </section>
+  <div class="rest">
+    <h1 class="name">이도</h1>
+    <p class="tag">선의 가게</p>
+    <p class="open">오늘 열림</p>
+    <ul class="treats">
+      <li><span>커트</span><span class="price">45,000</span></li>
+      <li><span>염색</span><span class="price">문의</span></li>
+      <li><span>펌</span><span class="price">130,000</span></li>
+      <li><span>상담</span><span class="price">문의</span></li>
+    </ul>
+    <div class="meta">
+      <p>화–일 11:00–20:00 · 월요일 쉼</p>
+      <p>서울 성동구 성수동</p>
+    </div>
+    <a class="map" href="https://map.kakao.com/">지도에서 보기</a>
+    <div class="acts">
+      <a class="btn" href="tel:050712345678">전화</a>
+      <a class="btn" href="https://open.kakao.com/" target="_blank" rel="noopener">톡</a>
+    </div>
+    <p class="foot">본점</p>
+  </div>
+</main>
+</body>
+</html>
