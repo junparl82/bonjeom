@@ -1,2 +1,5 @@
-# bonjeom
-본점 — 서울·수도권 1–3인 뷰티샵 공식 주소
+본점
+
+start: node server.mjs
+demo: /s/ido
+login: /login → /jangbu/facts → /jangbu/shop
