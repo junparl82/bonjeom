@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>본점</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100dvh;background:#f4f2ee;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
+.bar{padding:22px 22px 0;font-size:13px;color:#9a9a9a}
+.mid{padding:36px 24px 56px;max-width:430px;margin:0 auto;text-align:center}
+h1{font-size:28px;font-weight:600;letter-spacing:-.03em;line-height:1.3;text-align:center}
+.one{margin-top:14px;font-size:14px;line-height:1.5;color:#8a8a8a;text-align:center}
+.card{position:relative;margin:28px auto 0;width:min(320px,86vw);border-radius:16px;overflow:hidden;background:#111;aspect-ratio:3/4}
+.card .tex{position:absolute;inset:0;background:
+  radial-gradient(80% 70% at 70% 20%, rgba(255,255,255,.08), transparent 50%),
+  linear-gradient(90deg, #0a0a0a 0%, #161616 72%, #2a2a2a 78%, #111 86%, #0a0a0a 100%)}
+.card .slit{position:absolute;top:8%;bottom:8%;right:18%;width:2px;background:linear-gradient(180deg, transparent, rgba(255,255,255,.55), transparent)}
+.card .demo{position:absolute;top:14px;right:14px;font-size:11px;color:#cfcfcf}
+.card .who{position:absolute;left:18px;bottom:18px;color:#fff;text-align:left}
+.card .who b{display:block;font-size:22px;font-weight:600;letter-spacing:-.02em}
+.card .who span{display:block;margin-top:4px;font-size:13px;color:#d8d8d8}
+.lines{margin-top:28px;display:grid;gap:10px;font-size:15px;line-height:1.55;text-align:center}
+.no{margin-top:22px;display:grid;gap:8px;font-size:13px;line-height:1.55;color:#8a8a8a;text-align:center}
+.cta{display:block;margin-top:28px;text-align:center;text-decoration:none;background:#111;color:#fff;
+  border-radius:4px;padding:16px 18px;font-weight:600;font-size:15px}
+</style>
+</head>
+<body>
+  <div class="bar">본점</div>
+  <main class="mid">
+    <h1>우리 본점<br>보내드릴게요.</h1>
+    <p class="one">손님이 거래할 주소를 물을 때 원장이 건네는 한 줄.</p>
+    <div class="card">
+      <div class="tex"></div>
+      <div class="slit"></div>
+      <span class="demo">예시</span>
+      <div class="who"><b>이도</b><span>선의 가게</span></div>
+    </div>
+    <div class="lines">
+      <p>오늘 주소가 생깁니다.</p>
+      <p>플레이스 · 카카오맵 · 카톡 · 인스타에 붙입니다.</p>
+      <p>받고 가게를 적으면 오늘 공식 주소입니다.</p>
+    </div>
+    <div class="no">
+      <p>뷰티샵 원장만 받습니다. 카페 · 식당 · 몰 · 병원 · 학원은 받지 않습니다.</p>
+      <p>만드는 도구가 아닙니다. 보내는 주소입니다.</p>
+    </div>
+    <a class="cta" href="/login">본점을 받겠습니다</a>
+  </main>
+</body>
+</html>
