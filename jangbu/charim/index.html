@@ -6,34 +6,25 @@
 <title>Shopcard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100dvh;background:#f7f6f2;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
-.mid{max-width:430px;margin:0 auto;padding:36px 16px 64px}
-h1{font-size:22px;font-weight:600;letter-spacing:-.03em;padding:0 4px}
-.grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.card{display:block;text-decoration:none;min-height:120px;padding:18px 12px;border-radius:4px}
-.card .look{font-size:13px;opacity:.65}
-.card .name{margin-top:8px;font-size:20px}
-.bs{background:#0a0a0a;color:#f4f4f4}
-.wt{background:#f7f4ef;color:#1c1b19}
-.wd{background:#efe6d8;color:#2a1f16}
-.mg{background:#fff;color:#111}
-.hg{background:#f2efe8;color:#141414}
-.nn{background:#07080c;color:#f4f1ea}
-.foot{position:fixed;left:0;right:0;bottom:22px;text-align:center;font-size:10px;letter-spacing:.22em;color:#bbb}
+html,body{min-height:100dvh;background:#f6f5f2;color:#191f28;font-family:system-ui,-apple-system,sans-serif}
+.m{max-width:430px;margin:0 auto;padding:56px 16px 64px}
+h1{font-size:26px;font-weight:700;letter-spacing:-.03em;padding:0 8px}
+.phone{margin:20px auto 0;width:168px;padding:6px;background:#fff;border:1px solid #ceccc6;border-radius:28px}
+.phone a{display:block;border-radius:22px;overflow:hidden}
+.phone img{width:100%;height:auto;display:block}
+.row{margin-top:18px;display:flex;gap:8px;justify-content:center}
+.k{width:48px;height:48px;border-radius:12px;overflow:hidden;display:block;border:1px solid #dcdad6}
+.k img{width:100%;height:100%;object-fit:cover}
+.k.on{outline:3px solid #3182f6;outline-offset:3px}
+.foot{position:fixed;left:0;right:0;bottom:22px;text-align:center;font-size:10px;letter-spacing:.22em;color:#bab8b2}
 </style>
 </head>
 <body>
-  <main class="mid">
-    <h1>이런 느낌으로 갈까요</h1>
-    <div class="grid">
-      <a class="card bs" href="/jangbu/facts"><span class="look">블랙스튜디오</span><p class="name">리논</p></a>
-      <a class="card wt" href="/jangbu/facts"><span class="look">흰 타올</span><p class="name">리논</p></a>
-      <a class="card wd" href="/jangbu/facts"><span class="look">나무 조명</span><p class="name">리논</p></a>
-      <a class="card mg" href="/jangbu/facts"><span class="look">잡지 화보</span><p class="name">리논</p></a>
-      <a class="card hg" href="/jangbu/facts"><span class="look">한글 간결</span><p class="name">리논</p></a>
-      <a class="card nn" href="/jangbu/facts"><span class="look">밤 네온</span><p class="name">리논</p></a>
-    </div>
-  </main>
-  <p class="foot">Shopcard</p>
+<main class="m">
+<h1>이런 느낌으로 갈까요</h1>
+<div class="phone"><a href="/jangbu/facts"><img src="data:image/webp;base64,UklGRgwFAABXRUJQVlA4IAAFAABQLgCdASqMAC8BPwl+s1QrrrqsqXR6Q1AhCWlud8iUiz06SKtMe3RRYRaUgjrxJIvgUhh3+7zemFT0fJf7FRtImATKWolnd3Jzc8doa4mqcwhO5ueJLFiuZkyCggI/jZENAnmKy3U4BmfL+8uD/YL+fZPJkxDh/uM5PQ8YeUBBcf9zRKgzqQUE4NdpOrvgfBl6NBfVNET3TZgsmfMuTaC47zwHpBvqhq/hH1UEiV561s2YlqwMRcZnmJhTzVPSRPYf20GuFHEQDFX6mvTsdKIsp4jBLoy+NZWM4w8KNbSbWY00O+L6LuvrtjN38UTTmUIzt2LM5go9oSU0RYg87H1ewNGN5NALv7Az1PIWO+tQI7el2yZVQHEIS01ctjsp6dV9ILI57f2rYAEkKcHxhfAK31221Bx9xL/0wYKcCcLpBlvBPrxVmWoe77WDpBXtSFF/I16aFjKBiSkPBSAG663BKvPIMYNuHNz7deitjOac46kUhyBeLvCJGmeAAP7r9GM9ffOTvJ4tGmqBb7Jf6bBRPfAfVYRc+H+I9veuaoa1yFEWMY+glORuvctdoziZOSC4hP9m2ud9kNRgIJ7vLNS/zScu/t5GpLJwHWl4F7luFoDXn5CMoj/FD4g7CZh2o+L3nKXZSObiI2O6yg3/7T3Eei0J+qlzBgYRiT1SCxOMMRCfkJkJx4Fu0RHxBI9ttOFIFpN6Z3nnI8aqyg5sSnV/mA3wBCbuDAlc2ekM94SoM/7Ml+ja0Moco/GJWgcalGsDDIxs2yirfZfzr+EKgo2iu5DSgW0FEDnKAWZEIhYXgIU+EJmJuxnhczYqEJ4KhJUsTUZiQ9lfEfeVECGl7t6hTpwtEd1qkF9dLC9JU0c73I4QGrrz8GzZX8czP2IBBDLCTJ4zBESN2TpIfswEp5s61ZF5Z60ntfyWdBdD6Me48HSyg/748wh+01t++ovLoqDgO9T2hv/xPZzDIelCdBGd7GmBLGxRlwQ+m8EV07QISxdDb+rDnjllP2rkDdQZemHEVlBQtKlLcZwKZu/CUtjcQHAc2Ui0txZ5t8GQKFWp3jSSw5bPYy9EaBQhDZ19tjYgKbfiIAfhMjMUmiv/qDzFf04L95JYJ/yp9fsZa6QqvcaW6ZEbj3cEXn35SGWvWSFsRKk1XJRM11troNspyPf83M1o3AzQr2x35L+t7yV3+rKg9WEvC8vrzHpfs/LQausa3jH44kMfnbYwMW6jX6/HgN37zct5V8wFjS3FLmVGRpMSBphURiZlx7+sl0cpvVBxubUDYN1qn+bp3A40DBq79nR82Mmi7zCfM2TaBzZtPBz8osypzkS4gE6LfpQYZ8odffSdW4QqO68w/7Cn+fnHw5Ok9ocAlHIMMpweSinMgrLZDFki4R0CDu0xe3i/sGuW6GKOAXjjOlggpaZ6uSTs/EndldCt+rSwoJ899aM960qqJjBCS787WyOeEaLaPqJa+fvGp+ip2gsB50J6+q4DCRHT7+bzAiXYe5wxsAc/DX8qoUn+707dwQYvUJt63FOqekEROD2pX3Ixgmh6WhUJfB0m2lD46Pf6llUVME07AFEncdpR2R3vZVxy/jhy/DwZd8IbqbmOh5DNKaz1Jko8BzP3X1h3iYgdPWQfYxn30T26R8ne4zApkmjfS7L7kV75s3LFjoVyZ/viaeOSfYq5haaaA55vfJzb8hawLa3QAA==" alt="리논" width="140" height="303"></a></div>
+<div class="row"><a class="k on" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBgCdASowADAAPxF0sFGsJySisdmd+YAiCWcAy2hlVLElWHZL2RxueT6Ut+/paIfL6vvoEd/AWZJWUgnmi9AA/vd5GExcM+Q3kRRbgObLXU5ArjJ2lMUVFhOB5habiLgWSlmH+pUyyWvpW2ARUks3LBLG7QZtY+4yW9rQrhTd25qveKZial2tU+np+wujqlrKotW9yd+7nuFJ1qOi/AaLZAxx1XoXSB0KJjFuIkmvoBWEOGArylERGl7ym4WdtPEbGbzK7BGAAA==" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAAAwCACdASowADAAPyGMuVktKSUjo4oBoCQJZwDTpHVDfgjlWDBrAbqlZahTEwJW+HNt8LJTrCQ1IHwfnGyhyoxGxlq/GmPh2f4bAAD+wczgD8k8i1Y1zfpYGdBsmhcMMdAnbc6yVOOP2HHS3zBF82C8aSC9WYxqC4mv4mfe+wgEgoJCws9FuVP9wRr37ZKCPZ+eHaGh8Wjlc4GBz15mykqsl1SoO35rxRo+Ed5FfpQskhA1B2GOJPK6DVf3XzwlW6qZZDfq1viUIjg5cJ+6VliWII2AAA==" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAABQCACdASowADAAPw14sFGsKCUisdmd+YAhiWQAuzPRQclh4h9++6QMpQda8BvrF8FBeH2pM0VMVaEiVAkCq4jJlcHtoQkuXOofcsAA+euOPUV8k0s5tJFiLX009qOUPdPuQf392t+D7AlpmDrvkUFWbvwtEUBt7G8qe7U63hIC3fhPiBgTQjVU/BJXBHUxRY7Nf1kQZaPVrkalLIiR758OGVNvZiq3ZxBK2Y/qhJ9gfZYMLL/tV+gCMd75NP5pcmHC/3898OpRa6q5JGBSOyCLt+MLxqgKmH8SWegoFCeImAAA" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRoQBAABXRUJQVlA4IHgBAAAQCQCdASowADAAPyGCtlMtKSUiqrqsAaAkCWUAzRAOxlwiuoEywn0D5pcFaDSOv9Lp9PAjMUv1Lf6Etc0iu1RI0bxSJ9gbFPtjyKJlL96IzSAA/NTRU97mdtAmDfUdVj7O7WB6dEzaVurYuJ2WkQ8jUkuWHha1QvE9GLLb59/ux0yLskrkmbVXrJWfrYV0WLaKqlb+YiOK9mS4kXcZ213QwqX+hfiBvMALu9vnXMicV1hZKGLFVtpyLTet5pF0rj9504lhOdvZAXxS8H8judBMgP77KbXsI8qvN2GeJ4FEIquD+xK0MQaCYbuufsX8y1idH53mw1M02c7dW6yvRYftViArcXuVqTY6NEX54rTxCqUx+RKv4sxPCaQwmZAupt4MUeb9gzT03gYnKz41jrc8YKPDR3Bf19GWbjE6d32uwPwI/QPykwyGfldg7kBUu2hAngikx+V8H/79YF7Ig95xgS2G7wIBqDibWa/8ZrhYqBrKBdFdAAAA" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRiYBAABXRUJQVlA4IBoBAAAQCACdASowADAAPyGEtVYtKCSjpytpoCQJQBgiCVHMijNQS0pNxnq68YOA+IBsxLXcmrAV34ioKD/eIQpZuUm2vq38vq7XPXXwAP7mhHmQVHsQrrSjuFfJ6g05JZPB8myMqz0PJTKoXJDaoPFdg2P9pJcX+C8MKfc9d5RDslwhqitFT1vqduv5XOEQERn+CWJGK/AsySJDCl2n58iUhQuQgimanwp+SoKD90soB2zfgs2T0MUAp3P30QBUsA9Zm4ztHMmIpBDAGvMghzpseuf4fRAZm/vXJU0jl3L8e0ZbLs7SaJADF/x00jygnciKbCTeVxOVRGo63w97ao6d6rlV4YHmZDJ4wPwTbqF9ytEQ/dQEJp8Bm9eAAAA=" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRkIBAABXRUJQVlA4IDYBAADQBgCdASowADAAPwVwq1GrpyQivHYIAXAgiWYAzWmDB4wGr+r0vAaysFe/FJg94Jd7irMoe4alVXyaReyf7cAA/vVu6g1KCvujTKiyVapv58FZ6SGj9hW7nCqMefZ5FXQ5aR7WYoEqeCBILGC0hYsQG6yiStGNhnMoFcKvCSSvwkguEIpA5tsFpJI8L7+BwUf1ur7KsbXNaql6U5lpb5+qdO504wjKyhXaADBG79xOWtJy+8lJUyY5gmfFIEdXr6CFwcUZtKFdFGX3G2BkivZ8KjKCi3vMJispn7B7vFEN6i2ktf3YjFUVzL3GUlt6EAGeMIDoEuEJrWYLObu/rPsdGYTNgxKoQOw1pDLLuk1aPwf1iBkQhV4gDL+1FuSgaTW7V8Jdhk/jcVeSXTx90FxSOGHN6gAA" alt="" width="48" height="48"></a></div>
+</main>
+<p class="foot">Shopcard</p>
 </body>
 </html>
