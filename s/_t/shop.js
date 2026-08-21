@@ -6,9 +6,9 @@ function swipe(left,right){
 }
 async function fill(fn){
   let s=null
-  try{s=JSON.parse(localStorage.getItem('shop:'+slug)||'null')}catch{}
-  if(!s){try{const r=await fetch('/api/shop?slug='+encodeURIComponent(slug));if(r.ok)s=await r.json()}catch{}}
+  try{const r=await fetch('/api/shop?slug='+encodeURIComponent(slug));if(r.ok)s=await r.json()}catch{}
   if(!s){try{const all=await (await fetch('/shops.json')).json();s=all[slug]||null}catch{}}
+  if(!s){try{s=JSON.parse(localStorage.getItem('shop:'+slug)||'null')}catch{}}
   if(!s){s={name:slug,place:'',hours:'',rest:'',phone:'',treatments:[]}}
   fn(s)
 }

@@ -139,14 +139,24 @@ try{
 }catch(e){}
 syncHref();
 nameEl.addEventListener("input",()=>{applyPack(nameEl.value);syncHref()});
-save.addEventListener("click",e=>{
+save.addEventListener("click",async e=>{
   e.preventDefault();
   const shop=collect();
   if(!shop.slug) return;
+  const body={
+    slug:shop.slug,
+    name:shop.name,
+    phone:shop.phone,
+    place:shop.area,
+    hours:shop.hours,
+    rest:shop.rest,
+    treatments:shop.services.map(x=>(x.name+" "+x.price).trim())
+  };
+  try{localStorage.setItem("shopcard.shop",JSON.stringify(shop))}catch(err){}
   try{
-    localStorage.setItem("shopcard.shop",JSON.stringify(shop));
-    localStorage.setItem("shop:"+shop.slug,JSON.stringify({name:shop.name,place:shop.area,phone:shop.phone,hours:shop.hours,rest:shop.rest,treatments:shop.services.map(x=>x.name+" "+x.price)}));
-  }catch(err){}
+    const r=await fetch("/api/shop",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});
+    if(!r.ok) return;
+  }catch(err){return}
   location.href="/s/"+shop.slug;
 });
 </script>
