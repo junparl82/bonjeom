@@ -16,6 +16,7 @@
 .mn{flex:1;font-weight:600;color:var(--ink)}
 .mp{width:104px;text-align:right;color:var(--mute)}
 .mn::placeholder,.mp::placeholder{color:var(--quiet)}
+.mx{flex:none;width:44px;height:44px;border:0;background:transparent;color:var(--mute);font:inherit;font-size:22px;line-height:1}
 .shot{margin-top:10px;position:relative;border-radius:14px;overflow:hidden;height:86px;background:#111}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
 .shot .ex{position:absolute;top:8px;right:10px;color:rgba(210,210,212,.9);font-size:9px}
@@ -50,12 +51,7 @@
   <section class="card">
     <div class="block">
       <p class="q">뭐 하세요?</p>
-      <ul class="menu" id="menu">
-        <li><input class="mn" value="커트" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="45,000" placeholder=" " inputmode="decimal" autocomplete="off"></li>
-        <li><input class="mn" value="염색" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="문의" placeholder=" " autocomplete="off"></li>
-        <li><input class="mn" value="펌" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="130,000" placeholder=" " inputmode="decimal" autocomplete="off"></li>
-        <li><input class="mn" value="상담" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="문의" placeholder=" " autocomplete="off"></li>
-      </ul>
+      <ul class="menu" id="menu"></ul>
     </div>
   </section>
   <section class="card">
@@ -75,7 +71,7 @@ const PACK={
   "하루":{phone:"0507-1834-2201",area:"연남",hours:"화–일 11:00–20:00",rest:"월 휴무",
     menu:[["커트","38,000"],["염색","90,000"],["펌","110,000"],["클리닉","70,000"]]}
 };
-const EMPTY={phone:"",area:"",hours:"",rest:"",menu:[["",""],["",""],["",""],["",""]]};
+const EMPTY={phone:"",area:"",hours:"",rest:"",menu:[["",""]]};
 function slugFromName(name){
   const t=String(name||"").trim();
   if(!t) return "";
@@ -86,12 +82,32 @@ function slugFromName(name){
   for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}
   return "shop"+(h>>>0).toString(36).slice(0,6);
 }
-function menuRows(){return [...document.querySelectorAll("#menu li")].map(li=>[li.querySelector(".mn"),li.querySelector(".mp")])}
+function menuEl(){return document.getElementById("menu")}
+function menuRows(){return [...menuEl().querySelectorAll("li")].map(li=>[li.querySelector(".mn"),li.querySelector(".mp")])}
+function rowEl(n,p){
+  const li=document.createElement("li");
+  const mn=document.createElement("input");
+  mn.className="mn"; mn.setAttribute("placeholder"," "); mn.autocomplete="off"; mn.spellcheck=false; mn.value=n||"";
+  const mp=document.createElement("input");
+  mp.className="mp"; mp.setAttribute("placeholder"," "); mp.autocomplete="off"; mp.value=p||"";
+  if(/[0-9]/.test(p||"")) mp.inputMode="decimal";
+  const mx=document.createElement("button");
+  mx.type="button"; mx.className="mx"; mx.textContent="\u00d7";
+  li.append(mn,mp,mx);
+  return li;
+}
 function renderMenu(rows){
-  menuRows().forEach((pair,i)=>{
-    const [n,p]=rows[i]||["",""];
-    pair[0].value=n; pair[1].value=p;
-  });
+  const list=menuEl();
+  list.innerHTML="";
+  const src=(rows&&rows.length)?rows:[[ "","" ]];
+  src.forEach(([n,p])=>list.appendChild(rowEl(n,p)));
+  ensureTail();
+}
+function ensureTail(){
+  const rows=menuRows();
+  if(!rows.length){menuEl().appendChild(rowEl("",""));return}
+  const last=rows[rows.length-1];
+  if(last[0].value.trim()||last[1].value.trim()) menuEl().appendChild(rowEl("",""));
 }
 function applyPack(name){
   const p=PACK[String(name||"").trim()]||EMPTY;
@@ -124,6 +140,19 @@ function syncHref(){
   const s=slugFromName(nameEl.value);
   save.href=s?"/s/"+s:"#";
 }
+document.getElementById("menu").addEventListener("input",e=>{
+  if(e.target.classList.contains("mn")||e.target.classList.contains("mp")) ensureTail();
+});
+document.getElementById("menu").addEventListener("click",e=>{
+  const btn=e.target.closest(".mx");
+  if(!btn) return;
+  const li=btn.closest("li");
+  if(!li) return;
+  if(menuRows().length<=1){li.querySelector(".mn").value="";li.querySelector(".mp").value="";return}
+  li.remove();
+  if(!menuRows().length) menuEl().appendChild(rowEl("",""));
+  ensureTail();
+});
 applyPack(nameEl.value);
 try{
   const shop=JSON.parse(localStorage.getItem("shopcard.shop")||"null");
