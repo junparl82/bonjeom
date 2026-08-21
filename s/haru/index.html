@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title></title>
+<title>하루</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{min-height:100dvh;background:#111;overflow:hidden}
@@ -17,14 +17,15 @@ html,body{min-height:100dvh;background:#111;overflow:hidden}
 </head>
 <body>
 <main class="card" id="c">
-  <img src="/p/black-studio.jpg" alt="">
+  <img src="/p/black-studio.jpg" alt="하루" width="390" height="844">
   <p class="ex">예시</p>
-  <p class="meta"><b id="n"></b><span id="p"></span><span>오늘 열림</span></p>
+  <p class="meta"><b>하루</b><span>연남</span><span>오늘 열림</span></p>
 </main>
-<script src="/s/_t/shop.js"></script>
 <script>
-fill(s=>{n.textContent=s.name;p.textContent=s.place;document.title=s.name})
-swipe('/s/'+slug+'/sisul',null)
+let x=0
+function go(d){if(d<-48)location.href='/s/haru/sisul'}
+addEventListener('touchstart',e=>x=e.changedTouches[0].clientX,{passive:true})
+addEventListener('touchend',e=>go(e.changedTouches[0].clientX-x),{passive:true})
 </script>
 </body>
 </html>

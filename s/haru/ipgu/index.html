@@ -1,12 +1,13 @@
 <!doctype html>
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title></title>
+<title>하루</title>
 <style>html,body{margin:0;background:#111;height:100%;overflow:hidden}img{position:fixed;inset:0;width:100%;height:100%;object-fit:cover}a{position:fixed;left:16px;bottom:22px;color:#fff;font:600 14px/1 system-ui,sans-serif;text-decoration:none;text-shadow:0 1px 4px #000}</style>
-<img src="/s/rinon/ipgu/p.webp" alt="">
-<a id=n href="#"></a>
-<script src="/s/_t/shop.js"></script>
+<img src="/s/haru/ipgu/p.webp" alt="">
+<a href="/s/haru">하루</a>
 <script>
-fill(s=>{n.textContent=s.name;n.href='/s/'+slug;document.title=s.name})
-swipe(null,'/s/'+slug+'/gage')
+let x=0
+function go(d){if(d>48)location.href='/s/haru/gage'}
+addEventListener('touchstart',e=>x=e.changedTouches[0].clientX,{passive:true})
+addEventListener('touchend',e=>go(e.changedTouches[0].clientX-x),{passive:true})
 </script>
