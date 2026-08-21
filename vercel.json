@@ -1,1 +1,4 @@
-{"cleanUrls":true}
+{
+  "cleanUrls": true,
+  "rewrites": [{ "source": "/s/rinon/p.webp", "destination": "/api/hero" }]
+}
