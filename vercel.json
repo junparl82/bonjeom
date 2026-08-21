@@ -4,6 +4,22 @@
     { "source": "/s/rinon/p.webp", "destination": "/api/hero" },
     { "source": "/s/rinon/sisul/p.webp", "destination": "/api/sisul" },
     { "source": "/s/rinon/gage/p.webp", "destination": "/api/gage" },
-    { "source": "/s/rinon/ipgu/p.webp", "destination": "/api/ipgu" }
+    { "source": "/s/rinon/ipgu/p.webp", "destination": "/api/ipgu" },
+    { "source": "/p/black-studio.jpg", "destination": "/api/black_studio" },
+    { "source": "/p/black-studio-chip.jpg", "destination": "/api/black_studio_chip" },
+    { "source": "/p/hair.jpg", "destination": "/api/hair" },
+    { "source": "/p/nail.jpg", "destination": "/api/nail" },
+    { "source": "/p/lash.jpg", "destination": "/api/lash" },
+    { "source": "/p/skin.jpg", "destination": "/api/skin" },
+    { "source": "/p/white-towel.jpg", "destination": "/api/white_towel" },
+    { "source": "/p/white-towel-chip.jpg", "destination": "/api/white_towel_chip" },
+    { "source": "/p/wood.jpg", "destination": "/api/wood" },
+    { "source": "/p/wood-chip.jpg", "destination": "/api/wood_chip" },
+    { "source": "/p/magazine.jpg", "destination": "/api/magazine" },
+    { "source": "/p/magazine-chip.jpg", "destination": "/api/magazine_chip" },
+    { "source": "/p/hangul.jpg", "destination": "/api/hangul" },
+    { "source": "/p/hangul-chip.jpg", "destination": "/api/hangul_chip" },
+    { "source": "/p/neon.jpg", "destination": "/api/neon" },
+    { "source": "/p/neon-chip.jpg", "destination": "/api/neon_chip" }
   ]
 }
