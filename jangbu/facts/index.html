@@ -11,10 +11,11 @@
 .block{padding:14px 0}
 .block + .block{border-top:1px solid var(--line)}
 .menu{margin-top:10px}
-.menu li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:7px 0;list-style:none}
-.mn,.mp{border:0;outline:none;background:none;font:inherit;font-size:15px;min-width:0}
+.menu li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 0;list-style:none}
+.mn,.mp{border:1px solid var(--line);border-radius:12px;outline:none;background:var(--paper);font:inherit;font-size:15px;min-width:0;min-height:44px;padding:0 12px}
 .mn{flex:1;font-weight:600;color:var(--ink)}
-.mp{width:96px;text-align:right;color:var(--mute)}
+.mp{width:104px;text-align:right;color:var(--mute)}
+.mn::placeholder,.mp::placeholder{color:var(--quiet)}
 .shot{margin-top:10px;position:relative;border-radius:14px;overflow:hidden;height:86px;background:#111}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
 .shot .ex{position:absolute;top:8px;right:10px;color:rgba(210,210,212,.9);font-size:9px}
@@ -50,10 +51,10 @@
     <div class="block">
       <p class="q">뭐 하세요?</p>
       <ul class="menu" id="menu">
-        <li><input class="mn" value="커트" autocomplete="off" spellcheck="false"><input class="mp" value="45,000" inputmode="decimal" autocomplete="off"></li>
-        <li><input class="mn" value="염색" autocomplete="off" spellcheck="false"><input class="mp" value="문의" autocomplete="off"></li>
-        <li><input class="mn" value="펌" autocomplete="off" spellcheck="false"><input class="mp" value="130,000" inputmode="decimal" autocomplete="off"></li>
-        <li><input class="mn" value="상담" autocomplete="off" spellcheck="false"><input class="mp" value="문의" autocomplete="off"></li>
+        <li><input class="mn" value="커트" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="45,000" placeholder=" " inputmode="decimal" autocomplete="off"></li>
+        <li><input class="mn" value="염색" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="문의" placeholder=" " autocomplete="off"></li>
+        <li><input class="mn" value="펌" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="130,000" placeholder=" " inputmode="decimal" autocomplete="off"></li>
+        <li><input class="mn" value="상담" placeholder=" " autocomplete="off" spellcheck="false"><input class="mp" value="문의" placeholder=" " autocomplete="off"></li>
       </ul>
     </div>
   </section>
