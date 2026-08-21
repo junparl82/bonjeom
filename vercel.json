@@ -27,9 +27,11 @@
     { "source": "/p/neon-chip.jpg", "destination": "/api/neon_chip" },
     { "source": "/s/min", "destination": "/s/min/index.html" },
     { "source": "/s/shopxdrvzv", "destination": "/s/shopxdrvzv/index.html" },
+    { "source": "/s/noonprobe", "destination": "/api/card" },
     { "source": "/s/:slug/sisul", "destination": "/s/_t/sisul.html" },
     { "source": "/s/:slug/gage", "destination": "/s/_t/gage.html" },
     { "source": "/s/:slug/ipgu", "destination": "/s/_t/ipgu.html" },
-    { "source": "/s/:slug", "destination": "/api/card" }
+    { "source": "/s/:slug", "destination": "/api/card" },
+    { "source": "/s/:slug/", "destination": "/api/card" }
   ]
 }
