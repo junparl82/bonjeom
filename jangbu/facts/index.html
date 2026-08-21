@@ -6,14 +6,14 @@
 <title>Shopcard</title>
 <link rel="stylesheet" href="/t.css">
 <style>
-body{background:#f2f4f6}
-.pad{padding:50px 16px 120px}
-.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px 18px;margin-bottom:10px}
-.q{display:block;font-size:12px;color:var(--mute);margin-top:14px}
-.card .q:first-child{margin-top:0}
-.a,.card input,.card textarea{display:block;width:100%;margin-top:4px;font:700 22px/1.25 Pretendard,system-ui,sans-serif;letter-spacing:-.03em;border:0;background:transparent;color:inherit}
-.card textarea{font-size:15px;font-weight:600;resize:none;min-height:88px}
-.shot{margin-top:10px;position:relative;border-radius:12px;overflow:hidden;height:86px;background:#111}
+.pad{padding:48px 16px 120px}
+.card{padding:6px 20px 8px;margin-bottom:10px}
+.block{padding:14px 0}
+.block + .block{border-top:1px solid var(--line)}
+.menu{margin-top:10px}
+.menu li{display:flex;justify-content:space-between;padding:7px 0;font-size:15px;list-style:none}
+.menu span{color:var(--mute)}
+.shot{margin-top:10px;position:relative;border-radius:14px;overflow:hidden;height:86px;background:#111}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
 .shot .ex{position:absolute;top:8px;right:10px;color:rgba(210,210,212,.9);font-size:9px}
 </style>
@@ -21,58 +21,125 @@ body{background:#f2f4f6}
 <body>
 <main class="stage pad">
   <section class="card">
-    <label class="q">가게 이름이 뭐예요?</label>
-    <input id="name" class="a" value="하루">
-    <label class="q">전화 몇 번이에요?</label>
-    <input id="phone" class="a" value="0507-1420-8831">
-    <label class="q">어디 있어요?</label>
-    <input id="place" class="a" value="연남">
+    <div class="block">
+      <label class="q" for="name">가게 이름이 뭐예요?</label>
+      <input class="field" id="name" name="name" value="리논" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="block">
+      <label class="q" for="phone">전화 몇 번이에요?</label>
+      <input class="field" id="phone" name="phone" value="0507-1420-8831" inputmode="tel" autocomplete="off">
+    </div>
+    <div class="block">
+      <label class="q" for="area">어디 있어요?</label>
+      <input class="field" id="area" name="area" value="성수" autocomplete="off" spellcheck="false">
+    </div>
   </section>
   <section class="card">
-    <label class="q">몇 시에 열어요?</label>
-    <input id="hours" class="a" value="화–일 11:00–20:00">
-    <label class="q">언제 쉬어요?</label>
-    <input id="rest" class="a" value="월 휴무">
+    <div class="block">
+      <label class="q" for="hours">몇 시에 열어요?</label>
+      <input class="field" id="hours" name="hours" value="화–일 11:00–20:00" autocomplete="off">
+    </div>
+    <div class="block">
+      <label class="q" for="rest">언제 쉬어요?</label>
+      <input class="field" id="rest" name="rest" value="월 휴무" autocomplete="off">
+    </div>
   </section>
   <section class="card">
-    <label class="q">뭐 하세요?</label>
-    <textarea id="treats">커트 45,000
-염색 문의
-펌 130,000
-상담 문의</textarea>
+    <div class="block">
+      <p class="q">뭐 하세요?</p>
+      <ul class="menu" id="menu"></ul>
+    </div>
   </section>
   <section class="card">
-    <p class="q">가게 사진</p>
-    <div class="shot"><img src="/p/black-studio.jpg" alt="" width="326" height="86"><span class="ex">예시</span></div>
+    <div class="block">
+      <p class="q">가게 사진</p>
+      <div class="shot"><img id="shot" src="/p/black-studio.jpg" alt="가게 사진" width="326" height="86"><span class="ex">예시</span></div>
+    </div>
   </section>
-  <a class="cta" href="#" id="save">저장</a>
+  <a class="cta" id="save" href="/s/rinon">저장</a>
   <p class="foot">Shopcard</p>
 </main>
 <script>
-function slugify(n){
-  n=(n||'').trim()
-  const map={리논:'rinon',하루:'haru'}
-  let s=map[n]||n.toLowerCase().replace(/\s+/g,'-')
-  s=s.replace(/[^a-z0-9가-힣-]/g,'')
-  if(!s||s==='rinon'||s==='_t') s='shop'
-  return s.slice(0,32)
+const MAP={"리논":"rinon","하루":"haru"};
+const PACK={
+  "리논":{phone:"0507-1420-8831",area:"성수",hours:"화–일 11:00–20:00",rest:"월 휴무",
+    menu:[["커트","45,000"],["염색","문의"],["펌","130,000"],["상담","문의"]]},
+  "하루":{phone:"0507-1834-2201",area:"연남",hours:"화–일 11:00–20:00",rest:"월 휴무",
+    menu:[["커트","38,000"],["염색","90,000"],["펌","110,000"],["클리닉","70,000"]]}
+};
+const EMPTY={phone:"",area:"",hours:"",rest:"",menu:[["",""],["",""],["",""],["",""]]};
+function slugFromName(name){
+  const t=String(name||"").trim();
+  if(!t) return "";
+  if(MAP[t]) return MAP[t];
+  const latin=t.toLowerCase().replace(/\s+/g,"-").replace(/[^a-z0-9-]/g,"").replace(/-+/g,"-").replace(/^-|-$/g,"");
+  if(latin) return latin;
+  let h=2166136261;
+  for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}
+  return "shop"+(h>>>0).toString(36).slice(0,6);
 }
-save.onclick=async e=>{
-  e.preventDefault()
-  const shop={
-    name:name.value.trim()||'가게',
-    phone:phone.value.trim(),
-    place:place.value.trim(),
-    hours:hours.value.trim(),
-    rest:rest.value.trim(),
-    treatments:treats.value.split('\n').map(s=>s.trim()).filter(Boolean)
+function renderMenu(rows){
+  document.getElementById("menu").innerHTML=rows.map(([n,p])=>"<li>"+n+"<span>"+p+"</span></li>").join("");
+}
+function applyPack(name){
+  const p=PACK[String(name||"").trim()]||EMPTY;
+  document.getElementById("phone").value=p.phone;
+  document.getElementById("area").value=p.area;
+  document.getElementById("hours").value=p.hours;
+  document.getElementById("rest").value=p.rest;
+  renderMenu(p.menu);
+}
+function services(){
+  return [...document.querySelectorAll("#menu li")].map(li=>{
+    const price=li.querySelector("span");
+    return {name:(price?li.childNodes[0].textContent:li.textContent).trim(),price:price?price.textContent.trim():""};
+  }).filter(x=>x.name);
+}
+function collect(){
+  const name=(document.getElementById("name").value||"").trim();
+  const chair=(()=>{try{return localStorage.getItem("shopcard.chair")||"/p/black-studio.jpg"}catch(e){return "/p/black-studio.jpg"}})();
+  return {
+    name,
+    phone:document.getElementById("phone").value.trim(),
+    area:document.getElementById("area").value.trim(),
+    hours:document.getElementById("hours").value.trim(),
+    rest:document.getElementById("rest").value.trim(),
+    services:services(),
+    photo:chair,
+    slug:slugFromName(name)
+  };
+}
+const save=document.getElementById("save");
+const nameEl=document.getElementById("name");
+function syncHref(){
+  const s=slugFromName(nameEl.value);
+  save.href=s?"/s/"+s:"#";
+}
+applyPack(nameEl.value);
+try{
+  const shop=JSON.parse(localStorage.getItem("shopcard.shop")||"null");
+  if(shop&&shop.name&&shop.name===nameEl.value){
+    if(shop.phone) document.getElementById("phone").value=shop.phone;
+    if(shop.area) document.getElementById("area").value=shop.area;
+    if(shop.hours) document.getElementById("hours").value=shop.hours;
+    if(shop.rest) document.getElementById("rest").value=shop.rest;
+    if(shop.services&&shop.services.length) renderMenu(shop.services.map(x=>[x.name,x.price]));
   }
-  const slug=slugify(shop.name)
-  shop.slug=slug
-  try{localStorage.setItem('shop:'+slug,JSON.stringify(shop))}catch{}
-  try{await fetch('/api/shop',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(shop)})}catch{}
-  location.href='/s/'+encodeURIComponent(slug)
-}
+  const chair=localStorage.getItem("shopcard.chair");
+  if(chair) document.getElementById("shot").src=chair;
+}catch(e){}
+syncHref();
+nameEl.addEventListener("input",()=>{applyPack(nameEl.value);syncHref()});
+save.addEventListener("click",e=>{
+  e.preventDefault();
+  const shop=collect();
+  if(!shop.slug) return;
+  try{
+    localStorage.setItem("shopcard.shop",JSON.stringify(shop));
+    localStorage.setItem("shop:"+shop.slug,JSON.stringify({name:shop.name,place:shop.area,phone:shop.phone,hours:shop.hours,rest:shop.rest}));
+  }catch(err){}
+  location.href="/s/"+shop.slug;
+});
 </script>
 </body>
 </html>
