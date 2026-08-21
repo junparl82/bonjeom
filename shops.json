@@ -1,1 +1,5 @@
-{"haru": {"name": "하루", "phone": "0507-1834-2201", "place": "연남", "hours": "화–일 11:00–20:00", "rest": "월 휴무", "treatments": ["커트 38,000", "염색 90,000", "펌 110,000", "클리닉 70,000"]}}
+{
+  "haru": {"name": "하루", "phone": "0507-1834-2201", "place": "연남", "hours": "화–일 11:00–20:00", "rest": "월 휴무", "treatments": ["커트 38,000", "염색 90,000", "펌 110,000", "클리닉 70,000"]},
+  "min": {"name": "민", "phone": "", "place": "", "hours": "", "rest": "", "treatments": []},
+  "shopxdrvzv": {"name": "민", "phone": "", "place": "", "hours": "", "rest": "", "treatments": []}
+}
