@@ -2,29 +2,52 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shopcard</title>
+<link rel="stylesheet" href="/t.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100dvh;background:#f6f5f2;color:#191f28;font-family:system-ui,-apple-system,sans-serif}
-.m{max-width:430px;margin:0 auto;padding:56px 16px 64px}
-h1{font-size:26px;font-weight:700;letter-spacing:-.03em;padding:0 8px}
-.phone{margin:20px auto 0;width:168px;padding:6px;background:#fff;border:1px solid #ceccc6;border-radius:28px}
-.phone a{display:block;border-radius:22px;overflow:hidden}
-.phone img{width:100%;height:auto;display:block}
-.row{margin-top:18px;display:flex;gap:8px;justify-content:center}
-.k{width:48px;height:48px;border-radius:12px;overflow:hidden;display:block;border:1px solid #dcdad6}
-.k img{width:100%;height:100%;object-fit:cover}
-.k.on{outline:3px solid #3182f6;outline-offset:3px}
-.foot{position:fixed;left:0;right:0;bottom:22px;text-align:center;font-size:10px;letter-spacing:.22em;color:#bab8b2}
+.pad{padding:64px 20px 120px}
+.preview{margin:18px auto 0;width:min(248px,68vw);aspect-ratio:390/720;border-radius:22px;overflow:hidden;position:relative;background:#111}
+.preview img{width:100%;height:100%;object-fit:cover;display:block}
+.preview .veil{position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(180deg,transparent,rgba(8,8,10,.72))}
+.preview .meta{position:absolute;left:14px;bottom:16px;z-index:1;color:#fff}
+.preview .meta b{display:block;font-size:13px;font-weight:600;letter-spacing:-.02em}
+.preview .meta span{display:block;margin-top:2px;font-size:11px;font-weight:400;opacity:.92}
+.preview .ex{position:absolute;top:12px;right:12px;z-index:1;color:rgba(255,255,255,.72);font-size:9px}
+.row{margin:16px 0 0;display:flex;gap:8px;justify-content:space-between}
+.k{width:48px;height:48px;border:0;padding:0;border-radius:12px;overflow:hidden;background:#111;cursor:pointer;flex:0 0 48px}
+.k img{width:100%;height:100%;object-fit:cover;display:block}
+.k.on{box-shadow:0 0 0 3px var(--paper),0 0 0 6px var(--blue)}
 </style>
 </head>
 <body>
-<main class="m">
-<h1>이런 느낌으로 갈까요</h1>
-<div class="phone"><a href="/jangbu/facts"><img src="data:image/webp;base64,UklGRgwFAABXRUJQVlA4IAAFAABQLgCdASqMAC8BPwl+s1QrrrqsqXR6Q1AhCWlud8iUiz06SKtMe3RRYRaUgjrxJIvgUhh3+7zemFT0fJf7FRtImATKWolnd3Jzc8doa4mqcwhO5ueJLFiuZkyCggI/jZENAnmKy3U4BmfL+8uD/YL+fZPJkxDh/uM5PQ8YeUBBcf9zRKgzqQUE4NdpOrvgfBl6NBfVNET3TZgsmfMuTaC47zwHpBvqhq/hH1UEiV561s2YlqwMRcZnmJhTzVPSRPYf20GuFHEQDFX6mvTsdKIsp4jBLoy+NZWM4w8KNbSbWY00O+L6LuvrtjN38UTTmUIzt2LM5go9oSU0RYg87H1ewNGN5NALv7Az1PIWO+tQI7el2yZVQHEIS01ctjsp6dV9ILI57f2rYAEkKcHxhfAK31221Bx9xL/0wYKcCcLpBlvBPrxVmWoe77WDpBXtSFF/I16aFjKBiSkPBSAG663BKvPIMYNuHNz7deitjOac46kUhyBeLvCJGmeAAP7r9GM9ffOTvJ4tGmqBb7Jf6bBRPfAfVYRc+H+I9veuaoa1yFEWMY+glORuvctdoziZOSC4hP9m2ud9kNRgIJ7vLNS/zScu/t5GpLJwHWl4F7luFoDXn5CMoj/FD4g7CZh2o+L3nKXZSObiI2O6yg3/7T3Eei0J+qlzBgYRiT1SCxOMMRCfkJkJx4Fu0RHxBI9ttOFIFpN6Z3nnI8aqyg5sSnV/mA3wBCbuDAlc2ekM94SoM/7Ml+ja0Moco/GJWgcalGsDDIxs2yirfZfzr+EKgo2iu5DSgW0FEDnKAWZEIhYXgIU+EJmJuxnhczYqEJ4KhJUsTUZiQ9lfEfeVECGl7t6hTpwtEd1qkF9dLC9JU0c73I4QGrrz8GzZX8czP2IBBDLCTJ4zBESN2TpIfswEp5s61ZF5Z60ntfyWdBdD6Me48HSyg/748wh+01t++ovLoqDgO9T2hv/xPZzDIelCdBGd7GmBLGxRlwQ+m8EV07QISxdDb+rDnjllP2rkDdQZemHEVlBQtKlLcZwKZu/CUtjcQHAc2Ui0txZ5t8GQKFWp3jSSw5bPYy9EaBQhDZ19tjYgKbfiIAfhMjMUmiv/qDzFf04L95JYJ/yp9fsZa6QqvcaW6ZEbj3cEXn35SGWvWSFsRKk1XJRM11troNspyPf83M1o3AzQr2x35L+t7yV3+rKg9WEvC8vrzHpfs/LQausa3jH44kMfnbYwMW6jX6/HgN37zct5V8wFjS3FLmVGRpMSBphURiZlx7+sl0cpvVBxubUDYN1qn+bp3A40DBq79nR82Mmi7zCfM2TaBzZtPBz8osypzkS4gE6LfpQYZ8odffSdW4QqO68w/7Cn+fnHw5Ok9ocAlHIMMpweSinMgrLZDFki4R0CDu0xe3i/sGuW6GKOAXjjOlggpaZ6uSTs/EndldCt+rSwoJ899aM960qqJjBCS787WyOeEaLaPqJa+fvGp+ip2gsB50J6+q4DCRHT7+bzAiXYe5wxsAc/DX8qoUn+707dwQYvUJt63FOqekEROD2pX3Ixgmh6WhUJfB0m2lD46Pf6llUVME07AFEncdpR2R3vZVxy/jhy/DwZd8IbqbmOh5DNKaz1Jko8BzP3X1h3iYgdPWQfYxn30T26R8ne4zApkmjfS7L7kV75s3LFjoVyZ/viaeOSfYq5haaaA55vfJzb8hawLa3QAA==" alt="리논" width="140" height="303"></a></div>
-<div class="row"><a class="k on" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRtQAAABXRUJQVlA4IMgAAADQBgCdASowADAAPxF0sFGsJySisdmd+YAiCWcAy2hlVLElWHZL2RxueT6Ut+/paIfL6vvoEd/AWZJWUgnmi9AA/vd5GExcM+Q3kRRbgObLXU5ArjJ2lMUVFhOB5habiLgWSlmH+pUyyWvpW2ARUks3LBLG7QZtY+4yW9rQrhTd25qveKZial2tU+np+wujqlrKotW9yd+7nuFJ1qOi/AaLZAxx1XoXSB0KJjFuIkmvoBWEOGArylERGl7ym4WdtPEbGbzK7BGAAA==" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRuAAAABXRUJQVlA4INQAAAAwCACdASowADAAPyGMuVktKSUjo4oBoCQJZwDTpHVDfgjlWDBrAbqlZahTEwJW+HNt8LJTrCQ1IHwfnGyhyoxGxlq/GmPh2f4bAAD+wczgD8k8i1Y1zfpYGdBsmhcMMdAnbc6yVOOP2HHS3zBF82C8aSC9WYxqC4mv4mfe+wgEgoJCws9FuVP9wRr37ZKCPZ+eHaGh8Wjlc4GBz15mykqsl1SoO35rxRo+Ed5FfpQskhA1B2GOJPK6DVf3XzwlW6qZZDfq1viUIjg5cJ+6VliWII2AAA==" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAABQCACdASowADAAPw14sFGsKCUisdmd+YAhiWQAuzPRQclh4h9++6QMpQda8BvrF8FBeH2pM0VMVaEiVAkCq4jJlcHtoQkuXOofcsAA+euOPUV8k0s5tJFiLX009qOUPdPuQf392t+D7AlpmDrvkUFWbvwtEUBt7G8qe7U63hIC3fhPiBgTQjVU/BJXBHUxRY7Nf1kQZaPVrkalLIiR758OGVNvZiq3ZxBK2Y/qhJ9gfZYMLL/tV+gCMd75NP5pcmHC/3898OpRa6q5JGBSOyCLt+MLxqgKmH8SWegoFCeImAAA" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRoQBAABXRUJQVlA4IHgBAAAQCQCdASowADAAPyGCtlMtKSUiqrqsAaAkCWUAzRAOxlwiuoEywn0D5pcFaDSOv9Lp9PAjMUv1Lf6Etc0iu1RI0bxSJ9gbFPtjyKJlL96IzSAA/NTRU97mdtAmDfUdVj7O7WB6dEzaVurYuJ2WkQ8jUkuWHha1QvE9GLLb59/ux0yLskrkmbVXrJWfrYV0WLaKqlb+YiOK9mS4kXcZ213QwqX+hfiBvMALu9vnXMicV1hZKGLFVtpyLTet5pF0rj9504lhOdvZAXxS8H8judBMgP77KbXsI8qvN2GeJ4FEIquD+xK0MQaCYbuufsX8y1idH53mw1M02c7dW6yvRYftViArcXuVqTY6NEX54rTxCqUx+RKv4sxPCaQwmZAupt4MUeb9gzT03gYnKz41jrc8YKPDR3Bf19GWbjE6d32uwPwI/QPykwyGfldg7kBUu2hAngikx+V8H/79YF7Ig95xgS2G7wIBqDibWa/8ZrhYqBrKBdFdAAAA" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRiYBAABXRUJQVlA4IBoBAAAQCACdASowADAAPyGEtVYtKCSjpytpoCQJQBgiCVHMijNQS0pNxnq68YOA+IBsxLXcmrAV34ioKD/eIQpZuUm2vq38vq7XPXXwAP7mhHmQVHsQrrSjuFfJ6g05JZPB8myMqz0PJTKoXJDaoPFdg2P9pJcX+C8MKfc9d5RDslwhqitFT1vqduv5XOEQERn+CWJGK/AsySJDCl2n58iUhQuQgimanwp+SoKD90soB2zfgs2T0MUAp3P30QBUsA9Zm4ztHMmIpBDAGvMghzpseuf4fRAZm/vXJU0jl3L8e0ZbLs7SaJADF/x00jygnciKbCTeVxOVRGo63w97ao6d6rlV4YHmZDJ4wPwTbqF9ytEQ/dQEJp8Bm9eAAAA=" alt="" width="48" height="48"></a><a class="k" href="/jangbu/facts"><img src="data:image/webp;base64,UklGRkIBAABXRUJQVlA4IDYBAADQBgCdASowADAAPwVwq1GrpyQivHYIAXAgiWYAzWmDB4wGr+r0vAaysFe/FJg94Jd7irMoe4alVXyaReyf7cAA/vVu6g1KCvujTKiyVapv58FZ6SGj9hW7nCqMefZ5FXQ5aR7WYoEqeCBILGC0hYsQG6yiStGNhnMoFcKvCSSvwkguEIpA5tsFpJI8L7+BwUf1ur7KsbXNaql6U5lpb5+qdO504wjKyhXaADBG79xOWtJy+8lJUyY5gmfFIEdXr6CFwcUZtKFdFGX3G2BkivZ8KjKCi3vMJispn7B7vFEN6i2ktf3YjFUVzL3GUlt6EAGeMIDoEuEJrWYLObu/rPsdGYTNgxKoQOw1pDLLuk1aPwf1iBkQhV4gDL+1FuSgaTW7V8Jdhk/jcVeSXTx90FxSOGHN6gAA" alt="" width="48" height="48"></a></div>
+<main class="stage pad">
+  <h1>이런 느낌으로 갈까요</h1>
+  <div class="preview">
+    <img id="hero" src="/p/black-studio.jpg" alt="리논" width="248" height="458">
+    <div class="veil"></div>
+    <p class="ex">예시</p>
+    <p class="meta"><b>리논</b><span>성수</span><span>오늘 열림</span></p>
+  </div>
+  <div class="row" id="row">
+    <button type="button" class="k on" data-src="/p/black-studio.jpg"><img src="/p/black-studio-chip.jpg" alt="" width="48" height="48"></button>
+    <button type="button" class="k" data-src="/p/white-towel.jpg"><img src="/p/white-towel-chip.jpg" alt="" width="48" height="48"></button>
+    <button type="button" class="k" data-src="/p/wood.jpg"><img src="/p/wood-chip.jpg" alt="" width="48" height="48"></button>
+    <button type="button" class="k" data-src="/p/magazine.jpg"><img src="/p/magazine-chip.jpg" alt="" width="48" height="48"></button>
+    <button type="button" class="k" data-src="/p/hangul.jpg"><img src="/p/hangul-chip.jpg" alt="" width="48" height="48"></button>
+    <button type="button" class="k" data-src="/p/neon.jpg"><img src="/p/neon-chip.jpg" alt="" width="48" height="48"></button>
+  </div>
+  <a class="cta" href="/jangbu/facts">다음</a>
+  <p class="foot">Shopcard</p>
 </main>
-<p class="foot">Shopcard</p>
+<script>
+const row=document.getElementById("row");
+const hero=document.getElementById("hero");
+row.addEventListener("click",e=>{
+  const k=e.target.closest(".k"); if(!k) return;
+  row.querySelectorAll(".k").forEach(x=>x.classList.toggle("on",x===k));
+  hero.src=k.dataset.src;
+});
+</script>
 </body>
 </html>

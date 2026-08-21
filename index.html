@@ -2,29 +2,37 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shopcard</title>
+<link rel="stylesheet" href="/t.css">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100dvh;background:#f4f2ee;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
-.wrap{max-width:390px;margin:0 auto;padding:52px 22px 72px}
-h1{font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1.3}
-.sub{margin-top:10px;font-size:14px;line-height:1.5;color:#6b6b6b}
-.phone{display:block;width:168px;height:344px;margin:28px auto 0;border-radius:22px;overflow:hidden;background:#111;box-shadow:0 12px 32px rgba(0,0,0,.18)}
+.pad{padding:56px 24px 120px;min-height:100dvh;display:flex;flex-direction:column}
+h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.3}
+.addr{margin-top:10px;font-size:15px;line-height:1.5;color:var(--mute)}
+.phone{margin:20px auto 0;width:min(196px,52vw);aspect-ratio:390/844;border-radius:22px;overflow:hidden;position:relative;background:#111;box-shadow:0 0 0 1px #ceccc6}
 .phone img{width:100%;height:100%;object-fit:cover;display:block}
-.note{margin-top:22px;font-size:14px;line-height:1.55;color:#6b6b6b}
-.cta{display:block;margin-top:28px;text-align:center;text-decoration:none;background:#2f6bff;color:#fff;border-radius:12px;padding:16px 18px;font-weight:700;font-size:16px}
-.foot{position:fixed;left:0;right:0;bottom:18px;text-align:center;font-size:11px;letter-spacing:.18em;color:#c0c0c0}
+.phone .veil{position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(180deg,transparent,rgba(8,8,10,.7))}
+.phone .ex{position:absolute;top:10px;right:10px;z-index:1;color:rgba(255,255,255,.7);font-size:9px}
+.phone .meta{position:absolute;left:12px;bottom:14px;z-index:1;color:#fff}
+.phone .meta b{display:block;font-size:13px;font-weight:600;letter-spacing:-.02em}
+.phone .meta span{display:block;margin-top:2px;font-size:11px;opacity:.92}
+.limit{margin-top:auto;padding-top:18px;font-size:13px;line-height:1.55;color:#8b95a1}
+.cta{position:fixed}
 </style>
 </head>
 <body>
-  <main class="wrap">
-    <h1>가게 명함 보내드릴게요.</h1>
-    <p class="sub">손님이 홈페이지 있냐고 하면 이 주소를 주세요.</p>
-    <a class="phone" href="/s/rinon"><img src="/s/rinon/p.webp" alt="리논" width="168" height="344"></a>
-    <p class="note">뷰티샵만 받아요.<br>카페, 식당, 병원, 학원은 안 해요.</p>
-    <a class="cta" href="/login">시작하기.</a>
-  </main>
+<main class="stage pad">
+  <h1>가게 명함<br>보내드릴게요.</h1>
+  <p class="addr">손님이 홈페이지 있냐고 하면 이 주소를 주세요.</p>
+  <div class="phone">
+    <img src="/p/black-studio.jpg" alt="리논" width="196" height="424">
+    <div class="veil"></div>
+    <p class="ex">예시</p>
+    <p class="meta"><b>리논</b><span>성수</span><span>오늘 열림</span></p>
+  </div>
+  <p class="limit">뷰티샵만 받아요.<br>카페, 식당, 병원, 학원은 안 해요.</p>
+  <a class="cta" href="/login">시작하기.</a>
   <p class="foot">Shopcard</p>
+</main>
 </body>
 </html>

@@ -2,23 +2,16 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shopcard</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{min-height:100dvh;background:#f4f2ee;color:#111;font-family:Pretendard,system-ui,-apple-system,sans-serif}
-.mid{min-height:100dvh;display:grid;place-content:center;place-items:center;gap:28px;padding:40px 28px 80px}
-h1{font-size:22px;font-weight:600;letter-spacing:-.03em;text-align:center}
-.kakao{display:block;width:min(320px,86vw);border:0;border-radius:6px;background:#fee500;color:#191919;
-  font:inherit;font-size:16px;font-weight:600;padding:16px 20px;text-align:center;text-decoration:none}
-.foot{position:fixed;left:0;right:0;bottom:22px;text-align:center;font-size:10px;letter-spacing:.22em;color:#bbb}
-</style>
+<link rel="stylesheet" href="/t.css">
 </head>
 <body>
-  <div class="mid">
-    <h1>카카오로 들어가요.</h1>
-    <a class="kakao" href="/jangbu">카카오</a>
-  </div>
+<main class="stage" style="display:flex;flex-direction:column;min-height:100dvh;padding:72px 24px 120px">
+  <p class="mark">Shopcard</p>
+  <div style="flex:1"></div>
+  <a class="cta kakao" href="/jangbu"><span class="bubble" aria-hidden="true"></span>카카오로 들어가기</a>
   <p class="foot">Shopcard</p>
+</main>
 </body>
 </html>

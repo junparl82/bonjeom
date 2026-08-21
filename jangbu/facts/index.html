@@ -1,1 +1,51 @@
-<!doctype html><meta charset=utf-8><meta http-equiv=refresh content="0;url=/">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shopcard</title>
+<link rel="stylesheet" href="/t.css">
+<style>
+body{background:#f2f4f6}
+.pad{padding:50px 16px 120px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 18px 18px;margin-bottom:10px}
+.q{display:block;font-size:12px;color:var(--mute);margin-top:14px}
+.card .q:first-child{margin-top:0}
+.a{display:block;margin-top:4px;font-size:22px;font-weight:700;letter-spacing:-.03em}
+.menu{margin-top:10px}
+.menu li{display:flex;justify-content:space-between;padding:5px 0;font-size:15px;list-style:none}
+.menu span{color:var(--mute)}
+.shot{margin-top:10px;position:relative;border-radius:12px;overflow:hidden;height:86px;background:#111}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;display:block}
+.shot .ex{position:absolute;top:8px;right:10px;color:rgba(210,210,212,.9);font-size:9px}
+</style>
+</head>
+<body>
+<main class="stage pad">
+  <section class="card">
+    <p class="q">가게 이름이 뭐예요?</p><p class="a">리논</p>
+    <p class="q">전화 몇 번이에요?</p><p class="a">0507-1420-8831</p>
+    <p class="q">어디 있어요?</p><p class="a">성수</p>
+  </section>
+  <section class="card">
+    <p class="q">몇 시에 열어요?</p><p class="a">화–일 11:00–20:00</p>
+    <p class="q">언제 쉬어요?</p><p class="a">월 휴무</p>
+  </section>
+  <section class="card">
+    <p class="q">뭐 하세요?</p>
+    <ul class="menu">
+      <li>커트<span>45,000</span></li>
+      <li>염색<span>문의</span></li>
+      <li>펌<span>130,000</span></li>
+      <li>상담<span>문의</span></li>
+    </ul>
+  </section>
+  <section class="card">
+    <p class="q">가게 사진</p>
+    <div class="shot"><img src="/p/black-studio.jpg" alt="가게 사진" width="326" height="86"><span class="ex">예시</span></div>
+  </section>
+  <a class="cta" href="/s/rinon">저장</a>
+  <p class="foot">Shopcard</p>
+</main>
+</body>
+</html>
