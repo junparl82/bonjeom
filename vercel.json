@@ -1,6 +1,9 @@
 {
   "cleanUrls": true,
   "rewrites": [
+    { "source": "/s/haru/sisul/p.webp", "destination": "/api/haru_sisul" },
+    { "source": "/s/haru/gage/p.webp", "destination": "/api/haru_gage" },
+    { "source": "/s/haru/ipgu/p.webp", "destination": "/api/haru_ipgu" },
     { "source": "/s/rinon/p.webp", "destination": "/api/hero" },
     { "source": "/s/rinon/sisul/p.webp", "destination": "/api/sisul" },
     { "source": "/s/rinon/gage/p.webp", "destination": "/api/gage" },
