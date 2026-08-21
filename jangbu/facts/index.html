@@ -143,6 +143,9 @@ save.addEventListener("click",async e=>{
   e.preventDefault();
   const shop=collect();
   if(!shop.slug) return;
+  const LOCK={rinon:"리논",haru:"하루"};
+  if(LOCK[shop.slug] && LOCK[shop.slug]!==shop.name) return;
+  if(!LOCK[shop.slug] && (shop.name==="리논"||shop.name==="하루")) return;
   const body={
     slug:shop.slug,
     name:shop.name,
