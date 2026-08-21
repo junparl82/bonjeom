@@ -20,6 +20,10 @@
     { "source": "/p/hangul.jpg", "destination": "/api/hangul" },
     { "source": "/p/hangul-chip.jpg", "destination": "/api/hangul_chip" },
     { "source": "/p/neon.jpg", "destination": "/api/neon" },
-    { "source": "/p/neon-chip.jpg", "destination": "/api/neon_chip" }
+    { "source": "/p/neon-chip.jpg", "destination": "/api/neon_chip" },
+    { "source": "/s/:slug/sisul", "destination": "/s/_t/sisul.html" },
+    { "source": "/s/:slug/gage", "destination": "/s/_t/gage.html" },
+    { "source": "/s/:slug/ipgu", "destination": "/s/_t/ipgu.html" },
+    { "source": "/s/:slug", "destination": "/s/_t/index.html" }
   ]
 }

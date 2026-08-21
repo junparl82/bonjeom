@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title></title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100dvh;background:#111;overflow:hidden}
+.card{position:relative;min-height:100dvh}
+.card img{position:absolute;inset:0;width:100%;height:100dvh;object-fit:cover;object-position:50% 55%;display:block}
+.ex{position:absolute;top:14px;right:16px;z-index:1;color:rgba(210,210,212,.86);font-size:11px}
+.meta{position:absolute;left:20px;bottom:28px;z-index:1;color:#fff}
+.meta b{display:block;font:600 22px/1.2 Pretendard,-apple-system,system-ui,sans-serif;letter-spacing:-.02em}
+.meta span{display:block;margin-top:4px;font:400 13px/1.35 Pretendard,-apple-system,system-ui,sans-serif;opacity:.92}
+</style>
+</head>
+<body>
+<main class="card" id="c">
+  <img src="/p/black-studio.jpg" alt="">
+  <p class="ex">예시</p>
+  <p class="meta"><b id="n"></b><span id="p"></span><span>오늘 열림</span></p>
+</main>
+<script src="/s/_t/shop.js"></script>
+<script>
+fill(s=>{n.textContent=s.name;p.textContent=s.place;document.title=s.name})
+swipe('/s/'+slug+'/sisul',null)
+</script>
+</body>
+</html>
