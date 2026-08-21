@@ -2,17 +2,11 @@
 <meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>리논</title>
-<style>
-html,body{margin:0;background:#111;height:100%;overflow:hidden}
-img{position:fixed;inset:0;width:100%;height:100%;object-fit:cover}
-.f{position:fixed;left:20px;bottom:36px;color:#fff;font:400 14px/1.55 Pretendard,system-ui,sans-serif;text-shadow:0 1px 6px #000}
-.f b{display:block;font:600 18px/1.3 Pretendard,system-ui,sans-serif;margin-bottom:8px}
-</style>
-<img src="/s/rinon/gage/p.webp" alt="리논">
-<div class=f>
-<b>리논</b>
-화–일 11:00–20:00<br>
-월 휴무<br>
-성수<br>
-0507-1420-8831
-</div>
+<style>html,body{margin:0;background:#111;height:100%;overflow:hidden}img{position:fixed;inset:0;width:100%;height:100%;object-fit:cover}</style>
+<img src="/s/rinon/gage/p.webp" alt="">
+<script>
+let x=0
+function go(d){if(d<-48)location.href='/s/rinon/ipgu';else if(d>48)location.href='/s/rinon/sisul'}
+addEventListener('touchstart',e=>x=e.changedTouches[0].clientX,{passive:true})
+addEventListener('touchend',e=>go(e.changedTouches[0].clientX-x),{passive:true})
+</script>
