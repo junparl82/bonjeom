@@ -14,6 +14,13 @@ function bag(){
   for(const k of Object.keys(disk)) if(!mem[k]||LOCK.has(k)) mem[k]=disk[k]
   return mem
 }
+function named(list){
+  return (Array.isArray(list)?list:[]).map(x=>String(x||'').trim()).filter(s=>{
+    if(!s) return false
+    const name=s.split(/\s+/)[0]
+    return name&&name!=='문의'
+  })
+}
 function read(req){return new Promise(r=>{let s='';req.on('data',d=>s+=d);req.on('end',()=>r(s))})}
 export default async function handler(req,res){
   const mem=bag()
@@ -27,7 +34,7 @@ export default async function handler(req,res){
       return
     }
     if(!slug||LOCK.has(slug)){res.status(400).send('{"ok":false}');return}
-    const shop={name:b.name||slug,phone:b.phone||'',place:b.place||'',hours:b.hours||'',rest:b.rest||'',treatments:Array.isArray(b.treatments)?b.treatments:[]}
+    const shop={name:b.name||slug,phone:b.phone||'',place:b.place||'',hours:b.hours||'',rest:b.rest||'',treatments:named(b.treatments)}
     mem[slug]=shop
     try{
       const disk=file()
