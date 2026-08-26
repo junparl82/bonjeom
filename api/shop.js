@@ -15,12 +15,23 @@ function bag(){
   for(const k of Object.keys(disk)) if(!mem[k]||LOCK.has(k)) mem[k]=disk[k]
   return mem
 }
+function comma(n){
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,',')
+}
+function priced(s){
+  const t=String(s||'').trim()
+  if(!t) return ''
+  const bits=t.split(/\s+/)
+  const name=bits[0]
+  const rest=bits.slice(1).join('')
+  if(!name||name==='문의') return ''
+  if(!rest||rest==='문의') return name+' 문의'
+  const digits=rest.replace(/[^\d]/g,'')
+  if(!digits) return name+' 문의'
+  return name+' '+comma(digits)
+}
 function named(list){
-  const out=(Array.isArray(list)?list:[]).map(x=>String(x||'').trim()).filter(s=>{
-    if(!s) return false
-    const name=s.split(/\s+/)[0]
-    return name&&name!=='문의'
-  })
+  const out=(Array.isArray(list)?list:[]).map(priced).filter(Boolean)
   return out.length?out:FOUR
 }
 function read(req){return new Promise(r=>{let s='';req.on('data',d=>s+=d);req.on('end',()=>r(s))})}
