@@ -3,6 +3,5 @@
   "min": {"name": "민", "phone": "", "place": "", "hours": "", "rest": "", "treatments": ["커트 문의", "염색 문의", "펌 문의", "상담 문의"]},
   "shopxdrvzv": {"name": "민", "phone": "", "place": "", "hours": "", "rest": "", "treatments": ["커트 문의", "염색 문의", "펌 문의", "상담 문의"]},
   "nara": {"name": "나래", "phone": "", "place": "합정", "hours": "", "rest": "", "treatments": ["커트 문의", "염색 문의", "펌 문의", "상담 문의"]},
-  "daon": {"name": "다온", "phone": "", "place": "망원", "hours": "", "rest": "", "treatments": ["커트 문의", "염색 문의", "펌 문의", "상담 문의"]},
-  "shopjsp01d": {"name": "한결", "phone": "", "place": "", "hours": "", "rest": "", "treatments": ["커트 45,000", "염색 문의", "펌 문의", "상담 문의"]}
+  "daon": {"name": "다온", "phone": "", "place": "망원", "hours": "", "rest": "", "treatments": ["커트 문의", "염색 문의", "펌 문의", "상담 문의"]}
 }
