@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { getCache } from '@vercel/functions'
 const LOCK=new Set(['rinon','haru','_t','ido'])
 const SKIP=new Set(['shop12ju71','shoppm6plx'])
 const FOUR=['커트 문의','염색 문의','펌 문의','상담 문의']
@@ -44,6 +45,17 @@ function named(list){
   const out=(Array.isArray(list)?list:[]).map(priced).filter(Boolean)
   return out.length?out:FOUR
 }
+async function cacheGet(slug){
+  try{
+    const v=await getCache({namespace:'shop'}).get(slug)
+    return v&&typeof v==='object'?v:null
+  }catch{return null}
+}
+async function cacheSet(slug,shop){
+  try{
+    await getCache({namespace:'shop'}).set(slug,shop,{ttl:60*60*24*30,name:'shop'})
+  }catch{}
+}
 function read(req){return new Promise(r=>{let s='';req.on('data',d=>s+=d);req.on('end',()=>r(s))})}
 export default async function handler(req,res){
   const mem=bag()
@@ -61,6 +73,7 @@ export default async function handler(req,res){
     mem[slug]=shop
     const store=globalThis.__live||(globalThis.__live={})
     store[slug]=shop
+    await cacheSet(slug,shop)
     res.status(200).send(JSON.stringify({slug,...shop}))
     return
   }
@@ -68,8 +81,9 @@ export default async function handler(req,res){
   const slug=u.searchParams.get('slug')||''
   const disk=file()
   const live=globalThis.__live||{}
+  const hit=LOCK.has(slug)||SKIP.has(slug)?null:await cacheGet(slug)
   const rem=LOCK.has(slug)?{}:await remote()
-  let shop=LOCK.has(slug)&&(disk[slug]||mem[slug]) || live[slug] || mem[slug] || rem[slug] || disk[slug]
+  let shop=LOCK.has(slug)&&(disk[slug]||mem[slug]) || live[slug] || mem[slug] || hit || rem[slug] || disk[slug]
   if(shop) mem[slug]=shop
   if(!shop){res.status(404).send('{"ok":false}');return}
   if(!PACK[slug]) shop={...shop,treatments:named(shop.treatments)}
