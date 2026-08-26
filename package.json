@@ -5,5 +5,8 @@
   "scripts": {
     "start": "node server.mjs",
     "dev": "node server.mjs"
+  },
+  "dependencies": {
+    "@vercel/functions": "^2.2.13"
   }
 }
