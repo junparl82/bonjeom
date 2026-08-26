@@ -120,16 +120,27 @@ function addRow(name,price){
   });
   menuEl.appendChild(li);
 }
-function extrasLeft(){
+function isLockedShop(){
   const key=nameEl.value.trim();
-  if(key==="리논"||key==="하루") return [];
+  return key==="리논"||key==="하루";
+}
+function hairChips(){
+  if(upjong()!=="hair"||isLockedShop()) return [];
   const have=new Set(services().map(x=>x.name));
-  return (EXTRA[upjong()]||[]).filter(x=>!have.has(x));
+  return (EXTRA.hair||[]).filter(x=>!have.has(x));
 }
 function syncAdd(){
-  const more=extrasLeft();
-  document.getElementById("add").style.display=more.length?"inline-flex":"none";
-  if(!more.length) sugEl.classList.remove("on");
+  document.getElementById("add").style.display=isLockedShop()?"none":"inline-flex";
+  const chips=hairChips();
+  if(!chips.length){sugEl.classList.remove("on");sugEl.innerHTML="";return}
+  sugEl.classList.add("on");
+  sugEl.innerHTML="";
+  chips.forEach(label=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="chip"; b.textContent=label;
+    b.onclick=()=>{addRow(label,"문의");syncAdd()};
+    sugEl.appendChild(b);
+  });
 }
 function seedMenu(name){
   const key=String(name||"").trim();
@@ -185,16 +196,11 @@ try{
 syncHref();
 nameEl.addEventListener("input",()=>{applyPack(nameEl.value);syncHref()});
 document.getElementById("add").onclick=()=>{
-  const more=extrasLeft();
-  if(!more.length) return;
-  sugEl.classList.toggle("on");
-  sugEl.innerHTML="";
-  more.forEach(label=>{
-    const b=document.createElement("button");
-    b.type="button"; b.className="chip"; b.textContent=label;
-    b.onclick=()=>{addRow(label,"문의");sugEl.classList.remove("on");syncAdd()};
-    sugEl.appendChild(b);
-  });
+  if(isLockedShop()) return;
+  addRow("","문의");
+  const row=menuEl.lastElementChild;
+  if(row) row.querySelector(".mn").focus();
+  syncAdd();
 };
 save.addEventListener("click",async e=>{
   e.preventDefault();
@@ -203,6 +209,9 @@ save.addEventListener("click",async e=>{
   const LOCK={rinon:"리논",haru:"하루"};
   if(LOCK[shop.slug] && LOCK[shop.slug]!==shop.name) return;
   if(!LOCK[shop.slug] && (shop.name==="리논"||shop.name==="하루")) return;
+  if(PACK[shop.name]){
+    shop.services=PACK[shop.name].menu.map(([n,p])=>({name:n,price:p}));
+  }
   const body={slug:shop.slug,name:shop.name,phone:shop.phone,place:shop.area,hours:shop.hours,rest:shop.rest,treatments:shop.services.map(x=>(x.name+" "+x.price).trim())};
   try{localStorage.setItem("shopcard.shop",JSON.stringify(shop))}catch(err){}
   try{const r=await fetch("/api/shop",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok) return}catch(err){return}

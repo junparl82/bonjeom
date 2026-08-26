@@ -1,6 +1,10 @@
 import fs from 'fs'
 import path from 'path'
 const LOCK=new Set(['rinon','haru','_t','ido'])
+const PACK={
+  rinon:{name:"리논",phone:"0507-1420-8831",place:"성수",hours:"화–일 11:00–20:00",rest:"월 휴무",treatments:["커트 45,000","염색 문의","펌 130,000","상담 문의"]},
+  haru:{name:"하루",phone:"0507-1834-2201",place:"연남",hours:"화–일 11:00–20:00",rest:"월 휴무",treatments:["커트 38,000","염색 90,000","펌 110,000","클리닉 70,000"]}
+}
 function file(){
   try{return JSON.parse(fs.readFileSync(path.join(process.cwd(),'shops.json'),'utf8'))}catch{return {}}
 }
@@ -18,6 +22,10 @@ export default async function handler(req,res){
   if(req.method==='POST'){
     let b={};try{b=JSON.parse(await read(req)||'{}')}catch{b={}}
     const slug=String(b.slug||'').replace(/[^a-z0-9가-힣-]/gi,'').slice(0,32)
+    if(PACK[slug]){
+      res.status(200).send(JSON.stringify({slug,...PACK[slug]}))
+      return
+    }
     if(!slug||LOCK.has(slug)){res.status(400).send('{"ok":false}');return}
     const shop={name:b.name||slug,phone:b.phone||'',place:b.place||'',hours:b.hours||'',rest:b.rest||'',treatments:Array.isArray(b.treatments)?b.treatments:[]}
     mem[slug]=shop
