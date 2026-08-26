@@ -181,10 +181,13 @@ function applyPack(name){
   seedMenu(name);
 }
 function services(){
-  return [...menuEl.querySelectorAll("li")].map(li=>{
-    name:li.querySelector(".mn").value.trim(),
-    price:li.querySelector(".mp").value.trim()
-  }).filter(x=>x.name);
+  const out=[];
+  menuEl.querySelectorAll("li").forEach(li=>{
+    const name=li.querySelector(".mn").value.trim();
+    const price=li.querySelector(".mp").value.trim();
+    if(name) out.push({name:name,price:price});
+  });
+  return out;
 }
 function collect(){
   const name=(document.getElementById("name").value||"").trim();
@@ -229,7 +232,7 @@ save.addEventListener("click",async e=>{
   if(LOCK[shop.slug] && LOCK[shop.slug]!==shop.name) return;
   if(!LOCK[shop.slug] && (shop.name==="리논"||shop.name==="하루")) return;
   if(PACK[shop.name]){
-    shop.services=PACK[shop.name].menu.map(([n,p])=>({name:n,price:p}));
+    shop.services=PACK[shop.name].menu.map(function(pair){return {name:pair[0],price:pair[1]}});
   }
   const body={slug:shop.slug,name:shop.name,phone:shop.phone,place:shop.area,hours:shop.hours,rest:shop.rest,treatments:shop.services.map(x=>(x.name+" "+x.price).trim())};
   try{localStorage.setItem("shopcard.shop",JSON.stringify(shop))}catch(err){}
