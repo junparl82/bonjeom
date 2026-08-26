@@ -113,7 +113,14 @@ function addRow(name,price){
   li.querySelector(".mp").value=price||"문의";
   li.querySelector(".del").onclick=()=>{li.remove();syncAdd()};
   li.querySelector(".mp").addEventListener("focus",e=>{
+    e.target.setAttribute("inputmode","numeric");
     if(e.target.value==="문의") e.target.value="";
+  });
+  li.querySelector(".mp").addEventListener("pointerdown",e=>{
+    if(e.target.value==="문의"){
+      e.target.setAttribute("inputmode","numeric");
+      e.target.value="";
+    }
   });
   li.querySelector(".mp").addEventListener("blur",e=>{
     if(!e.target.value.trim()) e.target.value="문의";
@@ -204,6 +211,9 @@ document.getElementById("add").onclick=()=>{
 };
 save.addEventListener("click",async e=>{
   e.preventDefault();
+  [...menuEl.querySelectorAll("li")].forEach(li=>{
+    if(!li.querySelector(".mn").value.trim()) li.remove();
+  });
   const shop=collect();
   if(!shop.slug) return;
   const LOCK={rinon:"리논",haru:"하루"};
