@@ -6,8 +6,17 @@ const PACK={
   rinon:{name:"리논",phone:"0507-1420-8831",place:"성수",hours:"화–일 11:00–20:00",rest:"월 휴무",treatments:["커트 45,000","염색 문의","펌 130,000","상담 문의"]},
   haru:{name:"하루",phone:"0507-1834-2201",place:"연남",hours:"화–일 11:00–20:00",rest:"월 휴무",treatments:["커트 38,000","염색 90,000","펌 110,000","클리닉 70,000"]}
 }
+const RAW='https://raw.githubusercontent.com/junparl82/bonjeom/main/shops.json'
 function file(){
   try{return JSON.parse(fs.readFileSync(path.join(process.cwd(),'shops.json'),'utf8'))}catch{return {}}
+}
+async function remote(){
+  try{
+    const r=await fetch(RAW,{cache:'no-store'})
+    if(!r.ok) return {}
+    const j=await r.json()
+    return j&&typeof j==='object'?j:{}
+  }catch{return {}}
 }
 function bag(){
   const mem=globalThis.__shops||(globalThis.__shops={})
@@ -56,6 +65,9 @@ export default async function handler(req,res){
       const frozen=file()
       if(frozen.haru) disk.haru=frozen.haru
       if(frozen.rinon) disk.rinon=frozen.rinon
+      if(frozen.shopjsp01d && slug!=='shopjsp01d') disk.shopjsp01d=frozen.shopjsp01d
+      delete disk.shop12ju71
+      delete disk.shoppm6plx
       fs.writeFileSync(path.join(process.cwd(),'shops.json'),JSON.stringify(disk))
     }catch{}
     res.status(200).send(JSON.stringify({slug,...shop}))
@@ -64,7 +76,8 @@ export default async function handler(req,res){
   const u=new URL(req.url,'http://x')
   const slug=u.searchParams.get('slug')||''
   const disk=file()
-  let shop=LOCK.has(slug)&&(disk[slug]||mem[slug]) || mem[slug] || disk[slug]
+  const rem=LOCK.has(slug)?{}:await remote()
+  let shop=LOCK.has(slug)&&(disk[slug]||mem[slug]) || mem[slug] || disk[slug] || rem[slug]
   if(shop) mem[slug]=shop
   if(!shop){res.status(404).send('{"ok":false}');return}
   if(!PACK[slug]) shop={...shop,treatments:named(shop.treatments)}
