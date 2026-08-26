@@ -187,9 +187,6 @@ const save=document.getElementById("save");
 const nameEl=document.getElementById("name");
 const sugEl=document.getElementById("sug");
 function syncHref(){const s=slugFromName(nameEl.value);save.href=s?"/s/"+s:"#"}
-if((upjong()==="nail"||upjong()==="lash"||upjong()==="skin") && nameEl.value.trim()==="리논"){
-  nameEl.value="";
-}
 applyPack(nameEl.value);
 try{
   const shop=JSON.parse(localStorage.getItem("shopcard.shop")||"null");
