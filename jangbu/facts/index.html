@@ -111,7 +111,7 @@ function addRow(name,price){
   li.innerHTML='<input class="in mn" autocomplete="off" spellcheck="false"><input class="in mp" inputmode="decimal" autocomplete="off"><button type="button" class="del" aria-label="지우기">×</button>';
   li.querySelector(".mn").value=name||"";
   li.querySelector(".mp").value=price||"문의";
-  li.querySelector(".del").onclick=()=>li.remove();
+  li.querySelector(".del").onclick=()=>{li.remove();syncAdd()};
   li.querySelector(".mp").addEventListener("focus",e=>{
     if(e.target.value==="문의") e.target.value="";
   });
@@ -120,11 +120,23 @@ function addRow(name,price){
   });
   menuEl.appendChild(li);
 }
+function extrasLeft(){
+  const key=nameEl.value.trim();
+  if(key==="리논"||key==="하루") return [];
+  const have=new Set(services().map(x=>x.name));
+  return (EXTRA[upjong()]||[]).filter(x=>!have.has(x));
+}
+function syncAdd(){
+  const more=extrasLeft();
+  document.getElementById("add").style.display=more.length?"inline-flex":"none";
+  if(!more.length) sugEl.classList.remove("on");
+}
 function seedMenu(name){
   const key=String(name||"").trim();
   clearMenu();
-  if(PACK[key]){PACK[key].menu.forEach(([n,p])=>addRow(n,p));return}
+  if(PACK[key]){PACK[key].menu.forEach(([n,p])=>addRow(n,p));syncAdd();return}
   (START[upjong()]||START.hair).forEach(n=>addRow(n,"문의"));
+  syncAdd();
 }
 function applyPack(name){
   const key=String(name||"").trim();
@@ -173,16 +185,14 @@ try{
 syncHref();
 nameEl.addEventListener("input",()=>{applyPack(nameEl.value);syncHref()});
 document.getElementById("add").onclick=()=>{
-  if(nameEl.value.trim()==="리논"||nameEl.value.trim()==="하루") return;
-  const have=new Set(services().map(x=>x.name));
-  const more=(EXTRA[upjong()]||[]).filter(x=>!have.has(x));
-  if(!more.length){addRow("", "문의");return}
+  const more=extrasLeft();
+  if(!more.length) return;
   sugEl.classList.toggle("on");
   sugEl.innerHTML="";
   more.forEach(label=>{
     const b=document.createElement("button");
     b.type="button"; b.className="chip"; b.textContent=label;
-    b.onclick=()=>{addRow(label,"문의");sugEl.classList.remove("on")};
+    b.onclick=()=>{addRow(label,"문의");sugEl.classList.remove("on");syncAdd()};
     sugEl.appendChild(b);
   });
 };
