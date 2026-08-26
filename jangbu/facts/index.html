@@ -155,7 +155,7 @@ function applyPack(name){
   seedMenu(name);
 }
 function services(){
-  return [...menuEl.querySelectorAll("li")].map(li=>{
+  return [...menuEl.querySelectorAll("li")].map(li=>({
     name:li.querySelector(".mn").value.trim(),
     price:li.querySelector(".mp").value.trim()
   })).filter(x=>x.name);
