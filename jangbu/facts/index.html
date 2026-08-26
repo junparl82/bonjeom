@@ -106,15 +106,23 @@ function slugFromName(name){
 }
 const menuEl=document.getElementById("menu");
 function clearMenu(){menuEl.innerHTML=""}
+function formatPrice(v){
+  const t=String(v||"").trim();
+  if(!t||t==="문의") return "문의";
+  const n=t.replace(/[^\d]/g,"");
+  if(!n) return "문의";
+  return n.replace(/\B(?=(\d{3})+(?!\d))/g,",");
+}
 function addRow(name,price){
   const li=document.createElement("li");
   li.innerHTML='<input class="in mn" autocomplete="off" spellcheck="false"><input class="in mp" inputmode="decimal" autocomplete="off"><button type="button" class="del" aria-label="지우기">×</button>';
   li.querySelector(".mn").value=name||"";
-  li.querySelector(".mp").value=price||"문의";
+  li.querySelector(".mp").value=formatPrice(price||"문의");
   li.querySelector(".del").onclick=()=>{li.remove();syncAdd()};
   li.querySelector(".mp").addEventListener("focus",e=>{
     e.target.setAttribute("inputmode","numeric");
     if(e.target.value==="문의") e.target.value="";
+    else e.target.value=e.target.value.replace(/,/g,"");
   });
   li.querySelector(".mp").addEventListener("pointerdown",e=>{
     if(e.target.value==="문의"){
@@ -123,7 +131,7 @@ function addRow(name,price){
     }
   });
   li.querySelector(".mp").addEventListener("blur",e=>{
-    if(!e.target.value.trim()) e.target.value="문의";
+    e.target.value=formatPrice(e.target.value);
   });
   menuEl.appendChild(li);
 }
@@ -173,10 +181,10 @@ function applyPack(name){
   seedMenu(name);
 }
 function services(){
-  return [...menuEl.querySelectorAll("li")].map(li=>({
+  return [...menuEl.querySelectorAll("li")].map(li=>{
     name:li.querySelector(".mn").value.trim(),
     price:li.querySelector(".mp").value.trim()
-  })).filter(x=>x.name);
+  }).filter(x=>x.name);
 }
 function collect(){
   const name=(document.getElementById("name").value||"").trim();
@@ -213,6 +221,7 @@ save.addEventListener("click",async e=>{
   e.preventDefault();
   [...menuEl.querySelectorAll("li")].forEach(li=>{
     if(!li.querySelector(".mn").value.trim()) li.remove();
+    else li.querySelector(".mp").value=formatPrice(li.querySelector(".mp").value);
   });
   const shop=collect();
   if(!shop.slug) return;
