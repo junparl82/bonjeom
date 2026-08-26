@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 const LOCK=new Set(['rinon','haru','_t','ido'])
+const FOUR=['커트 문의','염색 문의','펌 문의','상담 문의']
 const PACK={
   rinon:{name:"리논",phone:"0507-1420-8831",place:"성수",hours:"화–일 11:00–20:00",rest:"월 휴무",treatments:["커트 45,000","염색 문의","펌 130,000","상담 문의"]},
   haru:{name:"하루",phone:"0507-1834-2201",place:"연남",hours:"화–일 11:00–20:00",rest:"월 휴무",treatments:["커트 38,000","염색 90,000","펌 110,000","클리닉 70,000"]}
@@ -15,11 +16,12 @@ function bag(){
   return mem
 }
 function named(list){
-  return (Array.isArray(list)?list:[]).map(x=>String(x||'').trim()).filter(s=>{
+  const out=(Array.isArray(list)?list:[]).map(x=>String(x||'').trim()).filter(s=>{
     if(!s) return false
     const name=s.split(/\s+/)[0]
     return name&&name!=='문의'
   })
+  return out.length?out:FOUR
 }
 function read(req){return new Promise(r=>{let s='';req.on('data',d=>s+=d);req.on('end',()=>r(s))})}
 export default async function handler(req,res){
@@ -54,5 +56,6 @@ export default async function handler(req,res){
   let shop=LOCK.has(slug)&&(disk[slug]||mem[slug]) || mem[slug] || disk[slug]
   if(shop) mem[slug]=shop
   if(!shop){res.status(404).send('{"ok":false}');return}
+  if(!PACK[slug]) shop={...shop,treatments:named(shop.treatments)}
   res.status(200).send(JSON.stringify({slug,...shop}))
 }
